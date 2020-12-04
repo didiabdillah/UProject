@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 
-use App\User;
+use App\Models\User;
 
 class AuthController extends Controller
 {
