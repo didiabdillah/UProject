@@ -13,6 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'AuthController@login');
+
+//Login
+Route::get('/login', 'AuthController@login')->name('login');
+Route::post('/login', 'AuthController@login_process')->name('login_process');
+
+//Register
+Route::get('/register', 'AuthController@register')->name('register');
+Route::post('/register', 'AuthController@register_process')->name('register_process');
+Route::post('/register/checkemail', 'AuthController@register_check_email')->name('register_check_email');
+
+//Logout
+Route::get('/logout', 'AuthController@logout')->name('logout');
+
+//Blocked
+Route::get('/blocked', 'AuthController@blocked')->name('blocked');
+
+//Home
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Project
+Route::get('/project', 'ProjectController@index')->name('project');
+
+//Project Detail
+Route::get('/{project_id}/project', 'ProjectController@detail')->name('project_detail');
+
+//Profile Setting
+Route::group(['prefix' => 'u'], function () {
+    Route::get('{user_id}/setting', 'SettingController@index')->name('setting');
 });
