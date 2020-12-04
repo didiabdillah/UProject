@@ -41,19 +41,27 @@
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" style="margin-right: 5px;width: 45px;margin-top: -12px;" class="img-circle elevation-2" alt="User Image">
+                <li class="nav-item dropdown user-menu">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="user-image img-circle elevation-2" alt="User Image">
+                        <span class="d-none d-md-inline">{{Session::get('user_name')}}</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">User Menu</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="{{route('logout')}}" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <!-- User image -->
+                        <li class="user-header bg-primary">
+                            <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="img-circle elevation-2" alt="User Image">
 
-                        </a>
-                    </div>
-                </li>
+                            <p>
+                                {{Session::get('user_name')}}
+                                <small>Member since Nov. 2012</small>
+                            </p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            <a href="{{route('logout')}}" class="btn btn-default btn-flat float-right">Sign out</a>
+                        </li>
+                    </ul>
             </ul>
         </nav>
         <!-- /.navbar -->
