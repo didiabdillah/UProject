@@ -13,6 +13,6 @@ class ProfileController extends Controller
 
     public function setting($user_id)
     {
-        echo "setting";
+        return view('profile.setting');
     }
 }

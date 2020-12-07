@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6 col-sm-2 col-md-2">
-                    <button class="btn btn-primary btn-lg mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add</button>
+                    <a href="{{route('project_add')}}" class="btn btn-primary btn-lg mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add</a>
                 </div>
                 <!-- /.col -->
             </div>
@@ -53,13 +53,7 @@
                                         </h3>
                                     </a>
                                     <div class="card-tools">
-                                        <ul class="pagination pagination-sm">
-                                            <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                                        </ul>
+
                                     </div>
                                 </div>
                                 <!-- /.card-header -->

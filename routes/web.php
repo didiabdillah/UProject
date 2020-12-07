@@ -40,14 +40,34 @@ Route::group(['middleware' => ['is_Login']], function () {
     //Project
     Route::get('/project', 'ProjectController@index')->name('project');
 
-    //Project Detail
+    //Project Add
+    Route::group(['prefix' => 'add'], function () {
+        Route::get('project', 'ProjectController@insert')->name('project_add');
+        Route::post('project', 'ProjectController@store')->name('project_add_post');
+    });
+
     Route::group(['prefix' => '{project_id}'], function () {
+        //Project Detail
         Route::get('project', 'ProjectController@detail')->name('project_detail');
+
+        //Project History Detail
+        Route::get('project/history', 'ProjectController@history')->name('project_history');
+
+        //Project Member Detail
+        Route::get('project/member', 'ProjectController@member')->name('project_member');
+
+        //Project Discussion Detail 
+        Route::get('project/discussion', 'ProjectController@discussion')->name('project_discussion');
+
+        //Project Task Detail
+        Route::get('project/task', 'ProjectController@task')->name('project_task');
     });
 
     //Profile Setting
     Route::group(['prefix' => 'u'], function () {
         Route::get('{user_id}', 'ProfileController@index')->name('profile');
+
+        //Profile Setting
         Route::get('{user_id}/setting', 'ProfileController@setting')->name('setting');
     });
 });

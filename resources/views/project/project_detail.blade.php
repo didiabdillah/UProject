@@ -32,20 +32,13 @@
                                     <!-- TO DO List -->
                                     <div class="card direct-chat direct-chat-primary">
                                         <div class="card-header">
-                                            <h3 class="card-title">
-                                                <i class="ion ion-clipboard mr-1"></i>
-                                                Title
-                                            </h3>
+                                            <a href="{{route('project_task', 1)}}">
+                                                <h3 class="card-title">
+                                                    <i class="fas fa-clipboard mr-1"></i>
+                                                    <h3 class="card-title">Title</h3>
+                                                </h3>
+                                            </a>
 
-                                            <div class="card-tools">
-                                                <ul class="pagination pagination-sm">
-                                                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                                                </ul>
-                                            </div>
                                         </div>
                                         <!-- /.card-header -->
 
@@ -96,7 +89,9 @@
                         <!-- DIRECT CHAT -->
                         <div class="card direct-chat direct-chat-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Direct Chat</h3>
+                                <a href="{{route('project_discussion', 1)}}">
+                                    <h3 class="card-title">Discussion</h3>
+                                </a>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -269,7 +264,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer text-center">
-                                <a href="javascript:">View All Users</a>
+                                <a href="{{route('project_member', 1)}}">View All Members</a>
                             </div>
                             <!-- /.card-footer -->
                         </div>
@@ -290,35 +285,125 @@
                             <div class="card-body">
                                 <!-- Conversations are loaded here -->
                                 <div class="direct-chat-messages">
-                                    <ul class=" products-list product-list-in-card pl-2 pr-2">
-                                        @for($i=0; $i<50; $i++) <li class="item">
-                                            <div class="product-img">
-                                                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Product Image" class="img-size-50">
+                                    <!-- Timelime example  -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <!-- The time line -->
+                                            <div class="timeline">
+                                                <!-- timeline time label -->
+                                                <div class="time-label">
+                                                    <span class="bg-red">10 Feb. 2014</span>
+                                                </div>
+                                                <!-- /.timeline-label -->
+                                                <!-- timeline item -->
+                                                <div>
+                                                    <i class="fas fa-envelope bg-blue"></i>
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fas fa-clock"></i> 12:05</span>
+                                                        <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+
+                                                        <div class="timeline-body">
+                                                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                                            quora plaxo ideeli hulu weebly balihoo...
+                                                        </div>
+                                                        <div class="timeline-footer">
+                                                            <a class="btn btn-primary btn-sm">Read more</a>
+                                                            <a class="btn btn-danger btn-sm">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- END timeline item -->
+                                                <!-- timeline item -->
+                                                <div>
+                                                    <i class="fas fa-user bg-green"></i>
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
+                                                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+                                                    </div>
+                                                </div>
+                                                <!-- END timeline item -->
+                                                <!-- timeline item -->
+                                                <div>
+                                                    <i class="fas fa-comments bg-yellow"></i>
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
+                                                        <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                                                        <div class="timeline-body">
+                                                            Take me to your leader!
+                                                            Switzerland is small and neutral!
+                                                            We are more like Germany, ambitious and misunderstood!
+                                                        </div>
+                                                        <div class="timeline-footer">
+                                                            <a class="btn btn-warning btn-sm">View comment</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- END timeline item -->
+                                                <!-- timeline time label -->
+                                                <div class="time-label">
+                                                    <span class="bg-green">3 Jan. 2014</span>
+                                                </div>
+                                                <!-- /.timeline-label -->
+                                                <!-- timeline item -->
+                                                <div>
+                                                    <i class="fa fa-camera bg-purple"></i>
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fas fa-clock"></i> 2 days ago</span>
+                                                        <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+                                                        <div class="timeline-body">
+                                                            <img src="https://placehold.it/150x100" alt="...">
+                                                            <img src="https://placehold.it/150x100" alt="...">
+                                                            <img src="https://placehold.it/150x100" alt="...">
+                                                            <img src="https://placehold.it/150x100" alt="...">
+                                                            <img src="https://placehold.it/150x100" alt="...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- END timeline item -->
+                                                <!-- timeline item -->
+                                                <div>
+                                                    <i class="fas fa-video bg-maroon"></i>
+
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fas fa-clock"></i> 5 days ago</span>
+
+                                                        <h3 class="timeline-header"><a href="#">Mr. Doe</a> shared a video</h3>
+
+                                                        <div class="timeline-body">
+                                                            <div class="embed-responsive embed-responsive-16by9">
+                                                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen></iframe>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-footer">
+                                                            <a href="#" class="btn btn-sm bg-maroon">See comments</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- END timeline item -->
+                                                <div>
+                                                    <i class="fas fa-clock bg-gray"></i>
+                                                </div>
                                             </div>
-                                            <div class="product-info">
-                                                <a href="javascript:void(0)" class="product-title">Alexander Bullock Graham Bell
-                                                    <span class="badge badge-warning float-right"><i class="fas fa-clock"></i> 1 Second Ago</span></a>
-                                                <span class="product-description">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem omnis provident, repudiandae animi aut asperiores possimus sit eos vero quod iure modi soluta voluptatem nulla ex rerum quibusdam minima pariatur!
-                                                </span>
-                                            </div>
-                                            </li>
-                                            @endfor
-                                    </ul>
-                                    <!-- /.item -->
-                                </div>
-                                <!--/.direct-chat-messages-->
-                                <div class="card-footer">
-                                    <div class="text-center">
-                                        <a href="#">
-                                            View All History
-                                        </a>
+                                        </div>
+                                        <!-- /.col -->
                                     </div>
                                 </div>
+                                <!-- /.timeline -->
                             </div>
-                            <!-- /.card-body -->
+                            <!--/.direct-chat-messages-->
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <a href="{{route('project_history', 1)}}">
+                                        View All History
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <!--/.direct-chat --
+                        <!-- /.card-body -->
+                    </div>
+                    <!--/.direct-chat --
                     </div>
                 </div>
             </div>
