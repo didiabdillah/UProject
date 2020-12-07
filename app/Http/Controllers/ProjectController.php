@@ -11,11 +11,13 @@ class ProjectController extends Controller
     //Project List
     public function index()
     {
+        //Project List
         $project = DB::table('projects')
             ->join('members', 'projects.project_id', '=', 'members.member_project_id')
             ->where('member_user_id', Session::get('user_id'))
             ->get();
 
+        //Task List
         $task = DB::table('projects')
             ->join('members', 'projects.project_id', '=', 'members.member_project_id')
             ->join('tasks', 'projects.project_id', '=', 'tasks.task_project_id')
@@ -43,7 +45,31 @@ class ProjectController extends Controller
     //Project Detail
     public function detail($project_id)
     {
-        return view('project.project_detail');
+        //Project List
+        $data["project"] = DB::table('projects')
+            ->where('project_id', $project_id)
+            ->first();
+
+        //Task List
+        $data["task"] = DB::table('tasks')
+            ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
+            ->where('project_id', $project_id)
+            ->get();
+
+        //Member List
+        $data["member"] = DB::table('members')
+            ->join('users', 'members.member_user_id', '=', 'users.user_id')
+            ->where('member_project_id', $project_id)
+            ->get();
+
+        //Member Count
+        $data["member_count"] = DB::table('members')
+            ->join('users', 'members.member_user_id', '=', 'users.user_id')
+            ->where('member_project_id', $project_id)
+            ->count();
+
+
+        return view('project.project_detail', compact('data'));
     }
 
     //Project History Detail

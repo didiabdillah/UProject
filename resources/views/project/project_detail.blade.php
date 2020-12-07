@@ -35,7 +35,7 @@
                                             <a href="{{route('project_task', 1)}}">
                                                 <h3 class="card-title">
                                                     <i class="fas fa-clipboard mr-1"></i>
-                                                    <h3 class="card-title">Title</h3>
+                                                    <h3 class="card-title">{{$data["project"]->project_title}}</h3>
                                                 </h3>
                                             </a>
 
@@ -51,7 +51,8 @@
                                         <div class="card-body">
                                             <div class="direct-chat-messages">
                                                 <ul class="todo-list" data-widget="todo-list">
-                                                    @for($i=0; $i<10; $i++) <li>
+                                                    @foreach($data["task"] as $task)
+                                                    <li>
                                                         <!-- checkbox -->
                                                         <div class="icheck-primary d-inline ml-2">
                                                             <input type="checkbox" value="" name="todo1" id="todoCheck1">
@@ -59,14 +60,14 @@
                                                         </div>
 
                                                         <!-- todo text -->
-                                                        <span class="text">Design a nice theme</span>
+                                                        <span class="text">{{$task->task_title}}</span>
                                                         <!-- General tools such as edit or delete-->
                                                         <div class="tools">
                                                             <i class="fas fa-edit"></i>
                                                             <i class="fas fa-trash"></i>
                                                         </div>
-                                                        </li>
-                                                        @endfor
+                                                    </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
@@ -198,7 +199,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">MEMBERS</h3>
                                 <div class="card-tools">
-                                    <span class="badge badge-danger">99 Members</span>
+                                    <span class="badge badge-danger">{{$data["member_count"]}} Members</span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
@@ -209,54 +210,12 @@
                             <div class="card-body">
                                 <div class="direct-chat-messages" style="height: 300px;">
                                     <ul class=" users-list clearfix">
+                                        @foreach($data["member"] as $member)
                                         <li>
-                                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">Dessy</a>
+                                            <img src="{{URL::asset('assets/img/profile/' . $member->user_image)}}" alt="User Image">
+                                            <a class="users-list-name" href="{{route('profile', $member->user_id)}}">{{$member->user_name}}</a>
                                         </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/women/94.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">Aisyah</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">Jane</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/women/74.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">Rere</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">Alexander</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/20.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">John</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">David</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">Dave</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">James Alan Hetfield</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/78.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">David</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">Dave</a>
-                                        </li>
-                                        <li>
-                                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Image">
-                                            <a class="users-list-name" href="#">James Alan Hetfield</a>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                     <!-- /.users-list -->
                                 </div>
