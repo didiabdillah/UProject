@@ -58,7 +58,7 @@
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            <a href="{{route('profile', Session::get('user_id'))}}" class="btn btn-default btn-flat">Profile</a>
                             <a href="{{route('logout')}}" class="btn btn-default btn-flat float-right">Sign out</a>
                         </li>
                     </ul>
@@ -69,7 +69,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
+            <a href="{{url('/')}}" class="brand-link">
                 <img src="{{URL::asset('assets/img/icon-white.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 1">
                 <span class="brand-text font-weight-light">UProject</span>
             </a>
@@ -82,7 +82,7 @@
                         <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{Session::get('user_name')}}</a>
+                        <a href="{{route('profile', Session::get('user_id'))}}" class="d-block">{{Session::get('user_name')}}</a>
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('project')}}" class="nav-link @if(Request::segment(1) == 'project') {{'active'}} @endif">
+                            <a href="{{route('project')}}" class="nav-link @if(Request::segment(1) == 'project' || Request::segment(2) == 'project') {{'active'}} @endif">
                                 <i class="nav-icon fas fa-project-diagram"></i>
                                 <p>
                                     Project

@@ -18,7 +18,7 @@ class CreateDiscussionsTable extends Migration
             $table->unsignedBigInteger('discussion_user_id');
             $table->unsignedBigInteger('discussion_project_id');
             $table->text('discussion_message');
-            $table->string('discussion_file', 255);
+            $table->string('discussion_file', 255)->nullable();
 
             $table->timestamps();
 

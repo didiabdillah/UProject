@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->unsignedBigInteger('project_user_id');
             $table->string('project_title', 150);
             $table->text('project_description');
-            $table->string('project_image', 255);
+            $table->string('project_image', 255)->nullable();
             $table->enum('project_status', ['active', 'deactive']);
             $table->boolean('project_finish');
 

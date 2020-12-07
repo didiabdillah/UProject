@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 //Logout
 Route::get('/logout', 'AuthController@logout')->name('logout');
 
@@ -43,10 +41,13 @@ Route::group(['middleware' => ['is_Login']], function () {
     Route::get('/project', 'ProjectController@index')->name('project');
 
     //Project Detail
-    Route::get('/{project_id}/project', 'ProjectController@detail')->name('project_detail');
+    Route::group(['prefix' => '{project_id}'], function () {
+        Route::get('project', 'ProjectController@detail')->name('project_detail');
+    });
 
     //Profile Setting
     Route::group(['prefix' => 'u'], function () {
-        Route::get('{user_id}/setting', 'SettingController@index')->name('setting');
+        Route::get('{user_id}', 'ProfileController@index')->name('profile');
+        Route::get('{user_id}/setting', 'ProfileController@setting')->name('setting');
     });
 });

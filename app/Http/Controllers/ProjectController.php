@@ -13,6 +13,6 @@ class ProjectController extends Controller
 
     public function detail($project_id)
     {
-        echo "project detail";
+        return view('project.project_detail');
     }
 }
