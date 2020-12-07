@@ -31,7 +31,8 @@
                 </div>
 
                 <div class="row">
-                    @for ($i=0; $i<3; $i++) <div class="col-md-6 col-lg-4">
+                    @foreach ($data["project"] as $project)
+                    <div class="col-md-6 col-lg-4">
                         <!-- Default box -->
                         <div class="card">
                             <div class="card-header">
@@ -46,10 +47,10 @@
                             <!-- TO DO List -->
                             <div class="card direct-chat direct-chat-primary">
                                 <div class="card-header">
-                                    <a href="{{route('project_detail', 1)}}" class="text-black">
+                                    <a href="{{route('project_detail', $project->project_id)}}" class="text-black">
                                         <h3 class="card-title">
                                             <i class="fas fa-clipboard mr-1"></i>
-                                            Title
+                                            {{$project->project_title}}
                                         </h3>
                                     </a>
                                     <div class="card-tools">
@@ -68,75 +69,27 @@
                                 <div class="card-body ">
                                     <div class="direct-chat-messages" style="height: 250px;">
                                         <ul class="todo-list" data-widget="todo-list">
+                                            @foreach($data["task"] as $task)
+                                            @if($task->task_project_id == $project->project_id)
                                             <li>
                                                 <!-- checkbox -->
                                                 <div class="icheck-primary d-inline ml-2">
                                                     <input type="checkbox" value="" name="todo1" id="todoCheck1">
                                                     <label for="todoCheck1"></label>
                                                 </div>
-                                                <!-- todo text -->
-                                                <span class="text">Design a nice theme</span>
-                                                <!-- General tools such as edit or delete-->
+                                                <span class="text">{{$task->task_title}}</span>
+
                                                 <div class="tools">
                                                     <i class="fas fa-edit"></i>
                                                     <i class="fas fa-trash"></i>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <div class="icheck-primary d-inline ml-2">
-                                                    <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
-                                                    <label for="todoCheck2"></label>
-                                                </div>
-                                                <span class="text">Make the theme responsive</span>
-                                                <div class="tools">
-                                                    <i class="fas fa-edit"></i>
-                                                    <i class="fas fa-trash"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="icheck-primary d-inline ml-2">
-                                                    <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                                                    <label for="todoCheck3"></label>
-                                                </div>
-                                                <span class="text">Let theme shine like a star</span>
-                                                <div class="tools">
-                                                    <i class="fas fa-edit"></i>
-                                                    <i class="fas fa-trash"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="icheck-primary d-inline ml-2">
-                                                    <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                                                    <label for="todoCheck4"></label>
-                                                </div>
-                                                <span class="text">Let theme shine like a star</span>
-                                                <div class="tools">
-                                                    <i class="fas fa-edit"></i>
-                                                    <i class="fas fa-trash"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="icheck-primary d-inline ml-2">
-                                                    <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                                                    <label for="todoCheck5"></label>
-                                                </div>
-                                                <span class="text">Check your messages and notifications</span>
-                                                <div class="tools">
-                                                    <i class="fas fa-edit"></i>
-                                                    <i class="fas fa-trash"></i>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="icheck-primary d-inline ml-2">
-                                                    <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                                                    <label for="todoCheck6"></label>
-                                                </div>
-                                                <span class="text">Let theme shine like a star</span>
-                                                <div class="tools">
-                                                    <i class="fas fa-edit"></i>
-                                                    <i class="fas fa-trash"></i>
-                                                </div>
-                                            </li>
+                                            @endif
+                                            @endforeach
+
+
+
+
                                         </ul>
                                     </div>
                                     <!-- /.card-body -->
@@ -153,9 +106,9 @@
                             <!-- /.card-footer-->
                         </div>
                         <!-- /.card -->
+                    </div>
+                    @endforeach
                 </div>
-                @endfor
-            </div>
         </section>
     </section>
     <!-- /.content -->
