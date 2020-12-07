@@ -38,24 +38,25 @@
                                                     <h3 class="card-title">{{$data["project"]->project_title}}</h3>
                                                 </h3>
                                             </a>
-
                                         </div>
                                         <!-- /.card-header -->
 
                                         <!-- Progress Bar -->
                                         <div class="progress mb-3" style="height: 1.75rem;">
-                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                                <span>90% Complete (success)</span>
+                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$data["project_percentage"]}}%">
+                                                <span>{{$data["project_percentage"]}}%</span>
                                             </div>
                                         </div>
                                         <div class="card-body">
                                             <div class="direct-chat-messages">
                                                 <ul class="todo-list" data-widget="todo-list">
                                                     @foreach($data["task"] as $task)
-                                                    <li>
+                                                    <li class="@if($task->task_finish == true && $task->task_user_id != Session::get('user_id') ){{'done'}}@endif">
                                                         <!-- checkbox -->
                                                         <div class="icheck-primary d-inline ml-2">
-                                                            <input type="checkbox" value="" name="todo1" id="todoCheck1">
+                                                            @if($task->task_user_id == Session::get('user_id'))
+                                                            <input type="checkbox" value="" name="todo1" id="todoCheck1" @if($task->task_finish == true){{'checked'}}@endif>
+                                                            @endif
                                                             <label for="todoCheck1"></label>
                                                         </div>
 

@@ -50,6 +50,20 @@ class ProjectController extends Controller
             ->where('project_id', $project_id)
             ->first();
 
+        //Project Percentage 
+        $task_total = DB::table('tasks')
+            ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
+            ->where('project_id', $project_id)
+            ->count();
+
+        $task_finish = DB::table('tasks')
+            ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
+            ->where('project_id', $project_id)
+            ->where('task_finish', 1)
+            ->count();
+
+        $data["project_percentage"] = (int) ($task_finish * 100 / $task_total);
+
         //Task List
         $data["task"] = DB::table('tasks')
             ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
