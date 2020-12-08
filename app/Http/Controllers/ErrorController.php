@@ -11,9 +11,9 @@ use App\Models\User;
 
 class ErrorController extends Controller
 {
-    public function notfound()
+    public function not_found()
     {
-        return view('error.404_notfound');
+        return view('error.404_not_found');
     }
 
     public function forbidden()

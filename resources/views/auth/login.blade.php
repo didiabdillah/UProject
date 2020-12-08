@@ -72,7 +72,7 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1 text-center">
-                <a href="forgot-password.html">I forgot my password</a>
+                <a href="{{route('forgot_password')}}">I forgot my password</a>
             </p>
             <p class="mb-0 text-center">
                 <a href="{{route('register')}}" class="text-center">Register a new membership</a>

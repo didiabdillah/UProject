@@ -29,6 +29,9 @@ Route::group(['middleware' => ['is_Not_Login']], function () {
     Route::get('/register', 'AuthController@register')->name('register');
     Route::post('/register', 'AuthController@register_process')->name('register_process');
     Route::post('/register/checkemail', 'AuthController@register_check_email')->name('register_check_email');
+
+    //Forgot Password
+    Route::get('/forgot', 'AuthController@forgot_password')->name('forgot_password');
 });
 
 //USER PAGE (LOGIN REQUIRED)
@@ -40,7 +43,7 @@ Route::group(['middleware' => ['is_Login']], function () {
     Route::get('/forbidden', 'ErrorController@forbidden')->name('forbidden');
 
     //404 Not Found Page
-    Route::get('/notfound', 'ErrorController@notfound')->name('not_found');
+    Route::get('/notfound', 'ErrorController@not_found')->name('not_found');
 
     //Home
     Route::get('/home', 'HomeController@index')->name('home');

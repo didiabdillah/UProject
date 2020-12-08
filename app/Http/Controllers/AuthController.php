@@ -176,4 +176,10 @@ class AuthController extends Controller
     {
         return view('auth.lock');
     }
+
+    public function forgot_password()
+    {
+
+        return view('auth.forgot_password');
+    }
 }
