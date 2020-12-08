@@ -70,6 +70,7 @@ Route::group(['middleware' => ['is_Login']], function () {
 
         //Project Member Detail
         Route::get('project/member', 'ProjectMemberController@index')->name('project_member');
+        Route::get('project/member/add', 'ProjectMemberController@add')->name('project_member_add');
 
         //Project Discussion Detail 
         Route::get('project/discussion', 'ProjectController@discussion')->name('project_discussion');

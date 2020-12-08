@@ -29,6 +29,17 @@ class ProjectMemberController extends Controller
             ->where('member_project_id', $project_id)
             ->count();
 
-        return view('project.project_member', ['data' => $data]);
+        return view('project_member.project_member', ['data' => $data]);
+    }
+
+    //Add Member 
+    public function add($project_id)
+    {
+        //Project Detail
+        $data["project"] = DB::table('projects')
+            ->where('project_id', $project_id)
+            ->first();
+
+        return view('project_member.project_member_add', ['data' => $data]);
     }
 }

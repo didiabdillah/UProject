@@ -10,8 +10,11 @@
 
         <div class="container-fluid">
             <div class="row">
+                <div class="col-6 col-sm-2 col-md-2">
+                    <a href="{{route('project_detail', $data['project']->project_id)}}" class="btn btn-danger btn-md mt-4 mb-3 btn-block"><i class="fas fa-arrow-left"></i> Project</a>
+                </div>
                 <div class="col-6 col-sm-3 col-md-3">
-                    <a href="{{route('project_add')}}" class="btn btn-primary btn-md mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add Member</a>
+                    <a href="{{route('project_member_add', $data['project']->project_id)}}" class="btn btn-primary btn-md mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add Member</a>
                 </div>
                 <!-- /.col -->
             </div>

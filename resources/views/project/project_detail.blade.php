@@ -242,7 +242,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer text-center">
-                                <a href="{{route('project_member', $data["project"]->project_id)}}">View All Members</a>
+                                <a href="{{route('project_member', $data['project']->project_id)}}">View All Members</a>
                             </div>
                             <!-- /.card-footer -->
                         </div>
