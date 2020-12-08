@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="{{URL::asset('assets/css/fontawesome-free/css/all.min.css')}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{URL::asset('assets/css/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{URL::asset('assets/css/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('assets/css/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{URL::asset('assets/css/adminlte.css')}}">
 
@@ -150,10 +154,35 @@
     <script src="{{URL::asset('assets/js/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- overlayScrollbars -->
     <script src="{{URL::asset('assets/js/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{URL::asset('assets/js/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{URL::asset('assets/js/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{URL::asset('assets/js/adminlte.min.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{URL::asset('assets/js/demo.js')}}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function() {
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "pagingType": "simple_numbers",
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -10,7 +10,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-6 col-sm-2 col-md-2">
+                <div class="col-6 col-sm-3 col-md-3">
                     <a href="{{route('project_add')}}" class="btn btn-primary btn-md mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add Member</a>
                 </div>
                 <!-- /.col -->
@@ -23,71 +23,58 @@
             <div class="card-header">
                 <h3 class="card-title">{{$data["project"]->project_title}} Members</h3>
                 <div class="card-tools">
+                    <span class="badge badge-danger">{{$data["member_count"]}} Members</span>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
                     </button>
 
                 </div>
             </div>
-            <div class="card-body p-0">
-                <table class="table table-striped projects">
+            <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 1%">
-                                #
-                            </th>
-                            <th style="width: 20%">
-                                Member Name
-                            </th>
-                            <th style="width: 30%">
-                                Member Role
-                            </th>
-                            <th>
-                                Task Progress
-                            </th>
-                            <th style="width: 8%" class="text-center">
-                                Status
-                            </th>
-                            <th style="width: 20%">
-                            </th>
+                            <th>Member Name</th>
+                            <th>Member Role</th>
+                            <th>Task Progress</th>
+                            <th>Status</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data["member"] as $member)
                         <tr>
                             <td>
-                                {{$loop->iteration}}
-                            </td>
-                            <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar" src="{{URL::asset('assets/img/profile/' . $member->user_image)}}">
                                     </li>
-                                    {{Str::words($member->user_name), 3}}
+                                    <li class="list-inline-item">
+                                        {{$member->user_name}}
+                                    </li>
                                 </ul>
                             </td>
                             <td>
                                 {{$member->member_role}}
                             </td>
-                            <td class="project_progress">
+                            <td>
                                 <div class="progress progress-sm">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
+                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%">
                                     </div>
                                 </div>
                                 <small>
-                                    57% Complete
+                                    77% Complete
                                 </small>
                             </td>
-                            <td class="project-state">
+                            <td>
                                 <span class="badge badge-success">Success</span>
                             </td>
-                            <td class="project-actions text-right">
+                            <td>
                                 <a class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
                                     </i>
                                     Remove
-                                </a>
-                            </td>
+                                </a></td>
                         </tr>
                         @endforeach
                     </tbody>
