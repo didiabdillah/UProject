@@ -13,7 +13,7 @@ class ErrorController extends Controller
 {
     public function notfound()
     {
-        return view('error.notfound');
+        return view('error.404_notfound');
     }
 
     public function forbidden()
