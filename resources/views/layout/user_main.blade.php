@@ -45,7 +45,7 @@
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="user-image img-circle elevation-2" alt="User Image">
-                        <span class="d-none d-md-inline">{{Session::get('user_name')}}</span>
+                        <span class="d-none d-md-inline">{{Str::words(Session::get('user_name'), 3)}}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
@@ -53,7 +53,7 @@
                             <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="img-circle elevation-2" alt="User Image">
 
                             <p>
-                                {{Session::get('user_name')}}
+                                {{Str::words(Session::get('user_name'), 3)}}
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
@@ -83,7 +83,7 @@
                         <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{route('profile', Session::get('user_id'))}}" class="d-block">{{Session::get('user_name')}}</a>
+                        <a href="{{route('profile', Session::get('user_id'))}}" class="d-block">{{Str::words(Session::get('user_name'), 3)}}</a>
                     </div>
                 </div>
 
