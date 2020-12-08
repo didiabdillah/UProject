@@ -34,6 +34,9 @@ Route::group(['middleware' => ['is_Not_Login']], function () {
 
 //USER PAGE (LOGIN REQUIRED)
 Route::group(['middleware' => ['is_Login']], function () {
+    //Locked Account
+    Route::get('/locked', 'AuthController@locked')->name('locked');
+
     //Home
     Route::get('/home', 'HomeController@index')->name('home');
 

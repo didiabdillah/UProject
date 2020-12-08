@@ -172,6 +172,11 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
+    public function locked()
+    {
+        return view('auth.lock');
+    }
+
     public function blocked()
     {
 
