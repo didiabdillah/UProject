@@ -17,8 +17,8 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <!-- TASK -->
                     <div class="col-md-9 col-lg-9 mt-4">
+                        <!-- TASK -->
                         <div class="row">
                             <div class="col-12">
                                 <!-- Default box -->
@@ -242,7 +242,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer text-center">
-                                <a href="{{route('project_member', 1)}}">View All Members</a>
+                                <a href="{{route('project_member', $data["project"]->project_id)}}">View All Members</a>
                             </div>
                             <!-- /.card-footer -->
                         </div>

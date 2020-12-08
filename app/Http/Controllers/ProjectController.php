@@ -45,7 +45,7 @@ class ProjectController extends Controller
     //Project Detail
     public function detail($project_id)
     {
-        //Project List
+        //Project Detail
         $data["project"] = DB::table('projects')
             ->where('project_id', $project_id)
             ->first();
@@ -78,6 +78,7 @@ class ProjectController extends Controller
         $data["member"] = DB::table('members')
             ->join('users', 'members.member_user_id', '=', 'users.user_id')
             ->where('member_project_id', $project_id)
+            ->orderBy('users.user_name', 'asc')
             ->get();
 
         //Member Count
@@ -94,12 +95,6 @@ class ProjectController extends Controller
     public function history($project_id)
     {
         return view('project.project_history');
-    }
-
-    //Project History Member
-    public function member($project_id)
-    {
-        return view('project.project_member');
     }
 
     //Project History Discussion

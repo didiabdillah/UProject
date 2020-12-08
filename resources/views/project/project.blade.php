@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6 col-sm-2 col-md-2">
-                    <a href="{{route('project_add')}}" class="btn btn-primary btn-lg mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add</a>
+                    <a href="{{route('project_add')}}" class="btn btn-primary btn-lg mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add Project</a>
                 </div>
                 <!-- /.col -->
             </div>
@@ -23,7 +23,6 @@
         <section class="content">
 
             <div class="container-fluid">
-
                 <div class="row mb-2 content-header">
                     <div class="col-sm-12">
                         <h1>In Progress</h1>
@@ -86,9 +85,6 @@
                                             </li>
                                             @endif
                                             @endforeach
-
-
-
 
                                         </ul>
                                     </div>
