@@ -16,10 +16,9 @@ use Illuminate\Support\Facades\Route;
 //Logout
 Route::get('/logout', 'AuthController@logout')->name('logout');
 
-//Blocked
-Route::get('/blocked', 'AuthController@blocked')->name('blocked');
-
+//AUTH PAGE (NOT LOGIN REQUIRED)
 Route::group(['middleware' => ['is_Not_Login']], function () {
+    //Root Link -> Linked To Login
     Route::get('/', 'AuthController@login');
 
     //Login
@@ -36,6 +35,12 @@ Route::group(['middleware' => ['is_Not_Login']], function () {
 Route::group(['middleware' => ['is_Login']], function () {
     //Locked Account
     Route::get('/locked', 'AuthController@locked')->name('locked');
+
+    //403 Forbidden Page
+    Route::get('/forbidden', 'ErrorController@forbidden')->name('forbidden');
+
+    //404 Not Found Page
+    Route::get('/notfound', 'ErrorController@notfound')->name('not_found');
 
     //Home
     Route::get('/home', 'HomeController@index')->name('home');

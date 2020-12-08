@@ -176,10 +176,4 @@ class AuthController extends Controller
     {
         return view('auth.lock');
     }
-
-    public function blocked()
-    {
-
-        echo "blocked";
-    }
 }
