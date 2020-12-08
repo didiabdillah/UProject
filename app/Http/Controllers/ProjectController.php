@@ -62,7 +62,11 @@ class ProjectController extends Controller
             ->where('task_finish', 1)
             ->count();
 
-        $data["project_percentage"] = (int) ($task_finish * 100 / $task_total);
+        if ($task_total > 0) {
+            $data["project_percentage"] = (int) ($task_finish * 100 / $task_total);
+        } else {
+            $data["project_percentage"] = 0;
+        }
 
         //Task List
         $data["task"] = DB::table('tasks')

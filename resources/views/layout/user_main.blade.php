@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets/css/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{URL::asset('assets/css/adminlte.css')}}">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

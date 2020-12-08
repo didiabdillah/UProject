@@ -1,8 +1,11 @@
 @extends('layout.user_main')
 
-@section('title', 'Project Title')
+@section('title', $data["project"]->project_title)
 
 @section('user_page')
+<!-- History Own Css -->
+<link rel="stylesheet" href="{{URL::asset('assets/css/HistoryOwnCSS.css')}}">
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper ">
 
@@ -194,8 +197,8 @@
                         <!-- /.card -->
                     </div>
 
-                    <!-- MEMBERS -->
                     <div class="col-md-3 col-lg-3 mt-4">
+                        <!-- MEMBERS -->
                         <div class="card direct-chat direct-chat-primary">
                             <div class="card-header">
                                 <h3 class="card-title">MEMBERS</h3>
@@ -250,101 +253,65 @@
                                         <div class="col-md-12">
                                             <!-- The time line -->
                                             <div class="timeline">
-                                                <!-- timeline time label -->
-                                                <div class="time-label">
-                                                    <span class="bg-red">10 Feb. 2014</span>
-                                                </div>
                                                 <!-- /.timeline-label -->
                                                 <!-- timeline item -->
                                                 <div>
-                                                    <i class="fas fa-envelope bg-blue"></i>
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i> 12:05</span>
-                                                        <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
+                                                        <h3 class="timeline-header"><a href="#">Support Team </a> </h3>
                                                         <div class="timeline-body">
-                                                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                                            quora plaxo ideeli hulu weebly balihoo...
-                                                        </div>
-                                                        <div class="timeline-footer">
-                                                            <a class="btn btn-primary btn-sm">Read more</a>
-                                                            <a class="btn btn-danger btn-sm">Delete</a>
+                                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem voluptas delectus eveniet doloremque? Soluta nisi at labore architecto consequuntur corporis obcaecati aperiam commodi assumenda ipsum asperiores, ea consequatur harum deleniti.
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- END timeline item -->
                                                 <!-- timeline item -->
                                                 <div>
-                                                    <i class="fas fa-user bg-green"></i>
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
-                                                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+                                                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> </h3>
+                                                        <div class="timeline-body">
+                                                            accepted your friend request
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!-- END timeline item -->
                                                 <!-- timeline item -->
                                                 <div>
-                                                    <i class="fas fa-comments bg-yellow"></i>
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
-                                                        <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                                                        <h3 class="timeline-header"><a href="#">Jay White</a> </h3>
                                                         <div class="timeline-body">
-                                                            Take me to your leader!
-                                                            Switzerland is small and neutral!
-                                                            We are more like Germany, ambitious and misunderstood!
-                                                        </div>
-                                                        <div class="timeline-footer">
-                                                            <a class="btn btn-warning btn-sm">View comment</a>
+                                                            commented on your post
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- END timeline item -->
-                                                <!-- timeline time label -->
-                                                <div class="time-label">
-                                                    <span class="bg-green">3 Jan. 2014</span>
-                                                </div>
+
                                                 <!-- /.timeline-label -->
                                                 <!-- timeline item -->
                                                 <div>
-                                                    <i class="fa fa-camera bg-purple"></i>
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i> 2 days ago</span>
-                                                        <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+                                                        <h3 class="timeline-header"><a href="#">Mina Lee</a> </h3>
                                                         <div class="timeline-body">
-                                                            <img src="https://placehold.it/150x100" alt="...">
-                                                            <img src="https://placehold.it/150x100" alt="...">
-                                                            <img src="https://placehold.it/150x100" alt="...">
-                                                            <img src="https://placehold.it/150x100" alt="...">
-                                                            <img src="https://placehold.it/150x100" alt="...">
+                                                            uploaded new photos
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- END timeline item -->
                                                 <!-- timeline item -->
                                                 <div>
-                                                    <i class="fas fa-video bg-maroon"></i>
-
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i> 5 days ago</span>
 
-                                                        <h3 class="timeline-header"><a href="#">Mr. Doe</a> shared a video</h3>
-
+                                                        <h3 class="timeline-header"><a href="#">Mr. Doe</a></h3>
                                                         <div class="timeline-body">
-                                                            <div class="embed-responsive embed-responsive-16by9">
-                                                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tMWkeBIohBs" allowfullscreen></iframe>
-                                                            </div>
-                                                        </div>
-                                                        <div class="timeline-footer">
-                                                            <a href="#" class="btn btn-sm bg-maroon">See comments</a>
+                                                            shared a video
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- END timeline item -->
-                                                <div>
-                                                    <i class="fas fa-clock bg-gray"></i>
-                                                </div>
                                             </div>
                                         </div>
                                         <!-- /.col -->
