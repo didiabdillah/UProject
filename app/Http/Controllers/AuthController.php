@@ -179,7 +179,11 @@ class AuthController extends Controller
 
     public function forgot_password()
     {
-
         return view('auth.forgot_password');
+    }
+
+    public function change_password()
+    {
+        return view('auth.change_password');
     }
 }

@@ -51,10 +51,9 @@
                         <!-- User image -->
                         <li class="user-header bg-primary">
                             <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="img-circle elevation-2" alt="User Image">
-
                             <p>
                                 {{Str::words(Session::get('user_name'), 3)}}
-                                <small>Member since Nov. 2012</small>
+                                <small>{{Session::get('user_email')}}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->

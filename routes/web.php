@@ -32,6 +32,9 @@ Route::group(['middleware' => ['is_Not_Login']], function () {
 
     //Forgot Password
     Route::get('/forgot', 'AuthController@forgot_password')->name('forgot_password');
+
+    //Change To New Password (Forgot Password)
+    Route::get('/change', 'AuthController@change_password')->name('change_password');
 });
 
 //USER PAGE (LOGIN REQUIRED)
@@ -57,6 +60,7 @@ Route::group(['middleware' => ['is_Login']], function () {
         Route::post('project', 'ProjectController@store')->name('project_add_post');
     });
 
+    // PROJECT
     Route::group(['prefix' => '{project_id}'], function () {
         //Project Detail
         Route::get('project', 'ProjectController@detail')->name('project_detail');
