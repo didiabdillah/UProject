@@ -65,52 +65,66 @@
 
                                     @if(Request::segment(2) == Session::get('user_id'))
                                     <div class="tab-pane  active" id="settings">
-                                        <form class="form-horizontal">
-                                            <div class="form-group row">
-                                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                                </div>
+                                        <!-- general form elements -->
+                                        <div class="card card-success">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Account</h3>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                                <div class="col-sm-10">
-                                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                                        </label>
+                                            <!-- /.card-header -->
+                                            <!-- form start -->
+                                            <form>
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Full Name</label>
+                                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" value="{{$user->user_name}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Email address</label>
+                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{$user->user_email}}">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                                <!-- /.card-body -->
+
+                                                <div class="card-footer">
+                                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
                                                 </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.card -->
+
+                                        <!-- general form elements -->
+                                        <div class="card card-danger">
+                                            <div class="card-header">
+                                                <h3 class="card-title">Change Password</h3>
                                             </div>
-                                        </form>
+                                            <!-- /.card-header -->
+                                            <!-- form start -->
+                                            <form>
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Old Password</label>
+                                                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter old password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">New Password</label>
+                                                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter new password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Retype New Password</label>
+                                                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter retype password">
+                                                    </div>
+
+                                                </div>
+                                                <!-- /.card-body -->
+
+                                                <div class="card-footer">
+                                                    <button type="reset" class="btn btn-danger">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Change Password</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.card -->
                                     </div>
                                     <!-- /.tab-pane -->
                                     @endif

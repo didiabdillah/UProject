@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
+use App\Models\Project;
+
 class ProjectMemberController extends Controller
 {
     //Member List
     public function index($project_id)
     {
         //Project Detail
-        $data["project"] = DB::table('projects')
-            ->where('project_id', $project_id)
-            ->first();
+        $data["project"] = Project::firstWhere('project_id', $project_id);
 
         //Member List
         $data["member"] = DB::table('members')
@@ -36,9 +36,7 @@ class ProjectMemberController extends Controller
     public function add($project_id)
     {
         //Project Detail
-        $data["project"] = DB::table('projects')
-            ->where('project_id', $project_id)
-            ->first();
+        $data["project"] = Project::firstWhere('project_id', $project_id);
 
         return view('project_member.project_member_add', ['data' => $data]);
     }

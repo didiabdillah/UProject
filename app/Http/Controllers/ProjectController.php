@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
+use App\Models\Project;
+
 class ProjectController extends Controller
 {
     //Project List
@@ -46,9 +48,7 @@ class ProjectController extends Controller
     public function detail($project_id)
     {
         //Project Detail
-        $data["project"] = DB::table('projects')
-            ->where('project_id', $project_id)
-            ->first();
+        $data["project"] = Project::firstWhere('project_id', $project_id);
 
         //Project Percentage 
         $task_total = DB::table('tasks')
