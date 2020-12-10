@@ -29,7 +29,39 @@
                         <div class="timeline">
                             <!-- timeline item -->
                             <div>
-                                <i class="fas fa-edit bg-blue"></i>
+                                <i class="fas fa-user-minus bg-red"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 12:05</span>
+                                    <h3 class="timeline-header"><a href="#">Support Team</a></h3>
+
+                                    <div class="timeline-body">
+                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                        quora plaxo ideeli hulu weebly balihoo...
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+                            <!-- timeline item -->
+                            <div>
+                                <i class="fas fa-user-plus bg-orange"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i> 12:05</span>
+                                    <h3 class="timeline-header"><a href="#">Support Team</a></h3>
+
+                                    <div class="timeline-body">
+                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                        quora plaxo ideeli hulu weebly balihoo...
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+                            <!-- timeline item -->
+                            <div>
+                                <i class="fas fa-edit bg-yellow"></i>
                                 <div class="timeline-item">
                                     <span class="time"><i class="fas fa-clock"></i> 12:05</span>
                                     <h3 class="timeline-header"><a href="#">Support Team</a></h3>
@@ -59,7 +91,7 @@
                             <!-- END timeline item -->
                             <!-- timeline item -->
                             <div>
-                                <i class="fas fa-window-close bg-red"></i>
+                                <i class="fas fa-window-close bg-blue"></i>
                                 <div class="timeline-item">
                                     <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
                                     <h3 class="timeline-header"><a href="#">Jay White</a></h3>
@@ -74,7 +106,7 @@
 
                             <!-- timeline item -->
                             <div>
-                                <i class="fa fa-check-square bg-purple"></i>
+                                <i class="fa fa-check-square bg-indigo"></i>
                                 <div class="timeline-item">
                                     <span class="time"><i class="fas fa-clock"></i> 2 days ago</span>
                                     <h3 class="timeline-header"><a href="#">Mina Lee</a></h3>
@@ -88,7 +120,7 @@
                             <!-- END timeline item -->
                             <!-- timeline item -->
                             <div>
-                                <i class="fas fa-pencil-alt bg-maroon"></i>
+                                <i class="fas fa-pencil-alt bg-purple"></i>
 
                                 <div class="timeline-item">
                                     <span class="time"><i class="fas fa-clock"></i> 5 days ago</span>
@@ -101,9 +133,6 @@
                                 </div>
                             </div>
                             <!-- END timeline item -->
-                            <div>
-                                <i class="fas fa-clock bg-gray"></i>
-                            </div>
                         </div>
                     </div>
                     <!-- /.col -->
