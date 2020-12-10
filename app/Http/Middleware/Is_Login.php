@@ -20,7 +20,7 @@ class Is_Login
      */
     public function handle($request, Closure $next)
     {
-        if (Session::get('user_id') && Session::get('user_role') && Session::get('user_email')) {
+        if (Session::get('user_id') && Session::get('user_role') && Session::get('user_email') && Session::get('user_name') && Session::get('user_image')) {
             return $next($request);
         } else if (Cookie::get('account') && Cookie::get('account')) {
             $user = User::firstWhere('user_email', Cookie::get('account'));
@@ -37,6 +37,10 @@ class Is_Login
             Session::put($data);
             return $next($request);
         } else {
+            Session::flush();
+            Cookie::queue(Cookie::forget('account'));
+            Cookie::queue(Cookie::forget('access'));
+
             return redirect()->route('login');
         }
     }
