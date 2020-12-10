@@ -76,7 +76,7 @@ Route::group(['middleware' => ['is_Login']], function () {
         Route::get('project/discussion', 'ProjectDiscussionController@index')->name('project_discussion');
 
         //Project Task Detail
-        Route::get('project/task', 'ProjectController@task')->name('project_task');
+        Route::get('project/task', 'ProjectTaskController@index')->name('project_task');
     });
 
     //Profile Setting

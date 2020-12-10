@@ -26,9 +26,7 @@
                         <!-- DIRECT CHAT -->
                         <div class="card direct-chat direct-chat-primary">
                             <div class="card-header">
-                                <a href="{{route('project_discussion', 1)}}">
-                                    <h3 class="card-title">Discussion</h3>
-                                </a>
+                                <h3 class="card-title">Discussion</h3>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">

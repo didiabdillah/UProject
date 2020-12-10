@@ -58,9 +58,9 @@
                                                         <!-- checkbox -->
                                                         <div class="icheck-primary d-inline ml-2">
                                                             @if($task->task_user_id == Session::get('user_id'))
-                                                            <input type="checkbox" value="" name="todo1" id="todoCheck1" @if($task->task_finish == true){{'checked'}}@endif>
+                                                            <input type="checkbox" value="" name="task{{$task->task_id}}" id="todoCheck{{$task->task_id}}" @if($task->task_finish == true){{'checked'}}@endif>
+                                                            <label for="todoCheck{{$task->task_id}}"></label>
                                                             @endif
-                                                            <label for="todoCheck1"></label>
                                                         </div>
 
                                                         <!-- todo text -->
