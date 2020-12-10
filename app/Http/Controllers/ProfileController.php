@@ -15,8 +15,10 @@ class ProfileController extends Controller
         return view('profile.profile', ['user' => $user]);
     }
 
-    public function setting($user_id)
+    public function settings($user_id)
     {
-        return view('profile.setting');
+        $user = User::firstWhere('user_id', $user_id);
+
+        return view('profile.settings', ['user' => $user]);
     }
 }

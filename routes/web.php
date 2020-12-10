@@ -84,6 +84,6 @@ Route::group(['middleware' => ['is_Login']], function () {
         Route::get('{user_id}', 'ProfileController@index')->name('profile');
 
         //Profile Setting
-        Route::get('{user_id}/setting', 'ProfileController@setting')->name('setting');
+        Route::get('{user_id}/settings', 'ProfileController@settings')->name('profile_settings');
     });
 });
