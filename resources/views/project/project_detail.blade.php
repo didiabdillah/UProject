@@ -120,6 +120,21 @@
                                         <div class="direct-chat-text">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ratione quasi magnam repellendus sed esse, error molestias consequatur nihil? Nihil quo quis quod eum. Quae ipsam maxime ipsa cupiditate ratione?
                                         </div>
+
+                                        <div class="direct-chat-text">
+                                            <div class="attachment">
+                                                <h4>Attachments:</h4>
+
+                                                <p class="filename">
+                                                    Theme-thumbnail-image.jpg
+                                                </p>
+
+                                                <div class="pull-right">
+                                                    <button type="button" class="btn btn-primary btn-sm btn-flat">Open</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.attachment -->
                                         <!-- /.direct-chat-text -->
                                     </div>
                                     <!-- /.direct-chat-msg -->

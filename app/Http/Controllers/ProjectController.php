@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 use App\Models\Project;
+use App\Models\Member;
 
 class ProjectController extends Controller
 {
@@ -17,6 +18,7 @@ class ProjectController extends Controller
         $project = DB::table('projects')
             ->join('members', 'projects.project_id', '=', 'members.member_project_id')
             ->where('member_user_id', Session::get('user_id'))
+            ->orderBy('projects.project_title', 'ASC')
             ->get();
 
         //Task List
@@ -39,8 +41,53 @@ class ProjectController extends Controller
         return view('project.project_add');
     }
 
+    //Project Add Process
     public function store(Request $request)
     {
+        // Input Validation
+        $request->validate([
+            'title'  => 'required|max:150',
+            'description'  => 'max:65500',
+            'image'  => 'mimetypes:image/png,image/jpeg,image/gif'
+        ]);
+
+        // Retrive File Data
+        $file = $request->file('image');
+
+        //Initialize variable
+        $user_id = $request->session()->get('user_id');
+        $title = htmlspecialchars($request->title);
+        $desc = htmlspecialchars($request->description);
+        $status = ($request->active == 'on') ? 'active' : 'deactive';
+        $image = ($file != NULL) ? $file->hashName() : NULL;
+
+        //Insert Data Project
+        $data = [
+            'project_user_id' => $user_id,
+            'project_title' => $title,
+            'project_description' => $desc,
+            'project_image' => $image,
+            'project_status' => $status,
+            'project_finish' => 0
+        ];
+        $query = Project::create($data);
+
+        //Insert Data Member(As Owner)
+        $data = [
+            'member_user_id' => $user_id,
+            'member_project_id' => $query->project_id,
+            'member_role' => 'owner',
+            'member_status' => 'active'
+        ];
+        Member::create($data);
+
+        //Flash Message
+        Session::flash('icon', 'success');
+        Session::flash('alert', 'Success');
+        Session::flash('subalert', 'Project Created');
+
+        //Back To Project
+        return redirect()->route('project');
     }
 
 

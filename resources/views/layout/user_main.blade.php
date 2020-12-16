@@ -166,8 +166,14 @@
     <script src="{{URL::asset('assets/js/datatables-buttons/js/buttons.html5.min.js')}}"></script>
     <script src="{{URL::asset('assets/js/datatables-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{URL::asset('assets/js/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+    <!-- bs-custom-file-input -->
+    <script src="{{URL::asset('assets/js/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{URL::asset('assets/js/adminlte.min.js')}}"></script>
+    <!-- Sweet Alert -->
+    <script src="{{URL::asset('assets/js/sweetalert2/sweetalert2.all.min.js')}}"></script>
+    <!-- Own Script -->
+    <script src="{{URL::asset('assets/js/ScriptSweetalert2.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{URL::asset('assets/js/demo.js')}}"></script>
     <!-- Page specific script -->
@@ -183,6 +189,12 @@
                 "responsive": true,
                 "pagingType": "simple_numbers",
             });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            bsCustomFileInput.init();
         });
     </script>
 </body>
