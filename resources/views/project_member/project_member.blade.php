@@ -3,6 +3,12 @@
 @section('title', $data["project"]->project_title)
 
 @section('user_page')
+
+<!-- Flash Alert -->
+@if (Session::has('alert'))
+<div id="flash-alert" data-flashalerticon="{{ Session::get('icon') }}" data-flashalert="{{ Session::get('alert') }}" data-flashsubalert="{{ Session::get('subalert') }}"></div>
+@endif
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Main content -->
@@ -13,9 +19,11 @@
                 <div class="col-6 col-sm-2 col-md-2">
                     <a href="{{route('project_detail', $data['project']->project_id)}}" class="btn btn-danger btn-md mt-4 mb-3 btn-block"><i class="fas fa-arrow-left"></i> Project</a>
                 </div>
+                @if($owner == 'owner')
                 <div class="col-6 col-sm-3 col-md-3">
                     <a href="{{route('project_member_add', $data['project']->project_id)}}" class="btn btn-primary btn-md mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add Member</a>
                 </div>
+                @endif
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -41,7 +49,9 @@
                             <th>Member Role</th>
                             <th>Task Progress</th>
                             <th>Status</th>
+                            @if($owner == 'owner')
                             <th></th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -72,12 +82,22 @@
                             <td>
                                 <span class="badge badge-success">Success</span>
                             </td>
+                            @if($owner == 'owner')
                             <td>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Remove
-                                </a></td>
+                                @if($member->member_role != $owner)
+                                <form action="{{route('project_member_remove', $project_id)}}" method="POST" id="Delete{{$member->member_id}}">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="hidden" name="id" value="{{$member->member_id}}">
+                                    <button class="btn btn-danger btn-sm" type="submit" id="delete-button" onclick="return confirm('Are you sure ?');">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Remove
+                                    </button>
+                                </form>
+                                @endif
+                            </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

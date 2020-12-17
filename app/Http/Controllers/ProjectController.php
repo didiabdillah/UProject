@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\Project;
 use App\Models\Member;
+use App\Models\History;
+use App\Models\User;
 
 class ProjectController extends Controller
 {
@@ -15,9 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         // TEST
-        $data = Project::where('member_user_id', 1)
-            ->join('members', 'projects.project_id', '=', 'members.member_project_id')
-            ->get();
+        $data = Project::all();
 
         // foreach ($data as $d) {
         //     foreach ($d->task as $t) {
@@ -85,13 +85,25 @@ class ProjectController extends Controller
         $query = Project::create($data);
 
         //Insert Data Member(As Owner)
-        $data = [
+        $member = [
             'member_user_id' => $user_id,
             'member_project_id' => $query->project_id,
             'member_role' => 'owner',
             'member_status' => 'active'
         ];
-        Member::create($data);
+        Member::create($member);
+
+        //Add To Log History (Owner Created Project)
+        $history = [
+            'history_user_id' => $user_id,
+            'history_project_id' => $query->project_id,
+            'history_subject' =>  User::find($user_id)->user_name,
+            'history_verb' => __('history.create_project'),
+            'history_object' => $title,
+            'history_icon' => __('history.icon_pencil'),
+            'history_background' => __('history.bg_purple'),
+        ];
+        History::create($history);
 
         //Flash Message
         Session::flash('icon', 'success');
@@ -101,7 +113,6 @@ class ProjectController extends Controller
         //Back To Project
         return redirect()->route('project');
     }
-
 
     //Project Detail
     public function detail($project_id)

@@ -72,6 +72,7 @@ Route::group(['middleware' => ['is_Login']], function () {
         Route::get('project/member', 'ProjectMemberController@index')->name('project_member');
         Route::get('project/member/add', 'ProjectMemberController@add')->name('project_member_add');
         Route::post('project/member/add', 'ProjectMemberController@store')->name('project_member_add_post');
+        Route::delete('project/member', 'ProjectMemberController@remove')->name('project_member_remove');
 
         //Project Discussion Detail 
         Route::get('project/discussion', 'ProjectDiscussionController@index')->name('project_discussion');

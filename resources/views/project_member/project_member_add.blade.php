@@ -28,11 +28,16 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Multiple</label>
-                            <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="member[]">
+                            <select class="select2 @error('member') is-invalid @enderror" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="member[]">
                                 @foreach($members as $member)
                                 <option value="{{$member->user_id}}">{{$member->user_name . " (" . $member->user_email . ")"}}</option>
                                 @endforeach
                             </select>
+                            @error('member')
+                            <div class="invalid-feedback">
+                                Please select users
+                            </div>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Member</button>

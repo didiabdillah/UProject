@@ -17,7 +17,11 @@ class CreateHistoriesTable extends Migration
             $table->bigIncrements('history_id');
             $table->unsignedBigInteger('history_user_id');
             $table->unsignedBigInteger('history_project_id');
-            $table->text('history_message');
+            $table->string('history_subject', 255);
+            $table->string('history_verb', 255);
+            $table->text('history_object');
+            $table->string('history_icon', 50);
+            $table->string('history_background', 50);
 
             $table->timestamps();
 
