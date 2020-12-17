@@ -55,15 +55,15 @@
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image">
                                     <label class="custom-file-label" for="image">Project Image</label>
-                                    @error('image')
-                                    <div class="invalid-feedback mt-5 pt-3 float-left" style="margin-left: -70rem;">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                                 </div>
                             </div>
+                            @error('image')
+                            <small class="text-danger">
+                                {{$message}}
+                            </small>
+                            @enderror
                         </div>
-                        <div class="form-group mt-4">
+                        <div class="form-group">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="active" name="active">
                                 <label class="form-check-label" for="active">Active</label>

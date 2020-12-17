@@ -49,10 +49,10 @@
                 </div>
                 <div class="input-group mb-3">
                     <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
-                    @if($errors->has('g-recaptcha-rsponse'))
-                    <div class="invalid-feedback">
-                        {{$errors->first('g-recaptcha-rsponse')}}
-                    </div>
+                    @if($errors->has('g-recaptcha-response'))
+                    <small class="text-danger">
+                        {{$errors->first('g-recaptcha-response')}}
+                    </small>
                     @endif
                 </div>
                 <div class="row">
