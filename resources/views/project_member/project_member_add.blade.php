@@ -23,21 +23,17 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form>
+                <form action="{{route('project_member_add_post', $project_id)}}" method="POST">
+                    @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Select Member</label>
-                            <select class="form-control select2" style="width: 100%;">
-                                <option selected="selected">Alabama</option>
-                                <option>Alaska</option>
-                                <option>California</option>
-                                <option>Delaware</option>
-                                <option>Tennessee</option>
-                                <option>Texas</option>
-                                <option>Washington</option>
+                            <label>Multiple</label>
+                            <select class="select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="member[]">
+                                @foreach($members as $member)
+                                <option value="{{$member->user_id}}">{{$member->user_name . " (" . $member->user_email . ")"}}</option>
+                                @endforeach
                             </select>
                         </div>
-
 
                         <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Member</button>
 

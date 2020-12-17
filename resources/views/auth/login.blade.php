@@ -47,6 +47,14 @@
                     </div>
                     @enderror
                 </div>
+                <div class="input-group mb-3">
+                    <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
+                    @if($errors->has('g-recaptcha-rsponse'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('g-recaptcha-rsponse')}}
+                    </div>
+                    @endif
+                </div>
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">

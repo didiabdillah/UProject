@@ -16,4 +16,9 @@ class Project extends Model
         'project_status',
         'project_finish'
     ];
+
+    public function task()
+    {
+        return $this->hasMany('App\Models\Task', 'task_project_id');
+    }
 }

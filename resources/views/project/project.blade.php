@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="row">
-                    @foreach ($data["project"] as $project)
+                    @foreach ($data as $project)
                     <div class="col-md-6 col-lg-4">
                         <!-- Default box -->
                         <div class="card">
@@ -73,13 +73,12 @@
                                 <div class="card-body ">
                                     <div class="direct-chat-messages" style="height: 250px;">
                                         <ul class="todo-list" data-widget="todo-list">
-                                            @foreach($data["task"] as $task)
-                                            @if($task->task_project_id == $project->project_id)
+                                            @foreach($project->task as $task)
                                             <li>
                                                 <!-- checkbox -->
                                                 <div class="icheck-primary d-inline ml-2">
-                                                    <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                                                    <label for="todoCheck1"></label>
+                                                    <input type="checkbox" value="" name="todo{{$task->task_id}}" id="todoCheck{{$task->task_id}}">
+                                                    <label for="todoCheck{{$task->task_id}}"></label>
                                                 </div>
                                                 <span class="text">{{$task->task_title}}</span>
 
@@ -88,9 +87,7 @@
                                                     <i class="fas fa-trash"></i>
                                                 </div>
                                             </li>
-                                            @endif
                                             @endforeach
-
                                         </ul>
                                     </div>
                                     <!-- /.card-body -->

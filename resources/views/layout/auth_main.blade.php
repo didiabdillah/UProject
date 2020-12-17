@@ -17,6 +17,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{URL::asset('assets/css/adminlte.css')}}">
 
+  <!-- Google ReCaptcha Script -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body class="hold-transition login-page">

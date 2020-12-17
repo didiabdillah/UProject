@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{URL::asset('assets/css/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{URL::asset('assets/css/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{URL::asset('assets/css/select2/css/select2.min.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{URL::asset('assets/css/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/css/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -172,6 +174,8 @@
     <script src="{{URL::asset('assets/js/adminlte.min.js')}}"></script>
     <!-- Sweet Alert -->
     <script src="{{URL::asset('assets/js/sweetalert2/sweetalert2.all.min.js')}}"></script>
+    <!-- Select2 -->
+    <script src="{{URL::asset('assets/js/select2/js/select2.full.min.js')}}"></script>
     <!-- Own Script -->
     <script src="{{URL::asset('assets/js/ScriptSweetalert2.js')}}"></script>
     <!-- AdminLTE for demo purposes -->
@@ -179,6 +183,9 @@
     <!-- Page specific script -->
     <script>
         $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
             $('#example2').DataTable({
                 "paging": true,
                 "lengthChange": true,

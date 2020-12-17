@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 
+use App\Rules\Captcha;
+
 use App\Models\User;
 
 class AuthController extends Controller
@@ -23,6 +25,7 @@ class AuthController extends Controller
             [
                 'login_email'  => 'required|email:rfc,dns',
                 'login_password'  => 'required',
+                'g-recaptcha-response' => new Captcha(),
             ],
             [
                 'login_password.required' => 'The password field is required.',

@@ -53,7 +53,7 @@
                                         <div class="card-body">
                                             <div class="direct-chat-messages">
                                                 <ul class="todo-list" data-widget="todo-list">
-                                                    @foreach($data["task"] as $task)
+                                                    @foreach($data["project"]->task as $task)
                                                     <li class="@if($task->task_finish == true && $task->task_user_id != Session::get('user_id') ){{'done'}}@endif">
                                                         <!-- checkbox -->
                                                         <div class="icheck-primary d-inline ml-2">

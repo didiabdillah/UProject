@@ -14,23 +14,35 @@ class ProjectController extends Controller
     //Project List
     public function index()
     {
-        //Project List
-        $project = DB::table('projects')
+        // TEST
+        $data = Project::where('member_user_id', 1)
             ->join('members', 'projects.project_id', '=', 'members.member_project_id')
-            ->where('member_user_id', Session::get('user_id'))
-            ->orderBy('projects.project_title', 'ASC')
             ->get();
 
-        //Task List
-        $task = DB::table('projects')
-            ->join('members', 'projects.project_id', '=', 'members.member_project_id')
-            ->join('tasks', 'projects.project_id', '=', 'tasks.task_project_id')
-            ->where('member_user_id', Session::get('user_id'))
-            ->get();
+        // foreach ($data as $d) {
+        //     foreach ($d->task as $t) {
+        //         dump($t);
+        //     }
+        // }
+        // die;
+
+        // //Project List
+        // $project = DB::table('projects')
+        //     ->join('members', 'projects.project_id', '=', 'members.member_project_id')
+        //     ->where('member_user_id', Session::get('user_id'))
+        //     ->orderBy('projects.project_title', 'ASC')
+        //     ->get();
+
+        // //Task List
+        // $task = DB::table('projects')
+        //     ->join('members', 'projects.project_id', '=', 'members.member_project_id')
+        //     ->join('tasks', 'projects.project_id', '=', 'tasks.task_project_id')
+        //     ->where('member_user_id', Session::get('user_id'))
+        //     ->get();
 
 
-        $data["project"] = $project;
-        $data["task"] = $task;
+        // $data["project"] = $project;
+        // $data["task"] = $task;
 
         return view('project.project', ['data' => $data]);
     }
@@ -95,7 +107,7 @@ class ProjectController extends Controller
     public function detail($project_id)
     {
         //Project Detail
-        $data["project"] = Project::firstWhere('project_id', $project_id);
+        $data["project"] = Project::find($project_id);
 
         //Project Percentage 
         $task_total = DB::table('tasks')
@@ -116,10 +128,10 @@ class ProjectController extends Controller
         }
 
         //Task List
-        $data["task"] = DB::table('tasks')
-            ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
-            ->where('project_id', $project_id)
-            ->get();
+        // $data["task"] = DB::table('tasks')
+        //     ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
+        //     ->where('project_id', $project_id)
+        //     ->get();
 
         //Member List
         $data["member"] = DB::table('members')

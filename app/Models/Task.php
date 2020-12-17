@@ -9,11 +9,16 @@ class Task extends Model
     protected $primaryKey = 'task_id';
 
     protected $fillable = [
-        'project_user_id',
-        'project_title',
-        'project_description',
-        'project_image',
-        'project_status',
-        'project_finish'
+        'task_user_id',
+        'task_project_id',
+        'task_title',
+        'task_deadline',
+        'task_status',
+        'task_finish'
     ];
+
+    public function project()
+    {
+        return $this->belongsTo('App\Models\Project', 'task_project_id');
+    }
 }
