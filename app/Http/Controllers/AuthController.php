@@ -109,7 +109,8 @@ class AuthController extends Controller
                 'register_email'  => 'required|email:rfc,dns',
                 'register_password'  => 'required',
                 'retype_password'  => 'required|same:register_password',
-                'terms'  => 'required'
+                'terms'  => 'required',
+                'g-recaptcha-response' => new Captcha(),
             ],
             [
                 'register_password.required' => 'The password field is required.',
@@ -121,7 +122,7 @@ class AuthController extends Controller
             ]
         );
 
-        //Check Apakah Ada Email Yang Sudah Terdaftar
+        //Check Is Email Already Registered
         $count = User::where('user_email', $request->register_email)->count();
         if ($count > 0) {
             Session::flash('icon', 'error');
@@ -139,20 +140,21 @@ class AuthController extends Controller
             'user_email_verified_at' => NULL,
             'user_image' => 'default.jpg'
         ];
-
         User::create($data);
 
+        //Flash Message
         Session::flash('icon', 'success');
         Session::flash('alert', 'Register Success');
         Session::flash('subalert', 'Please Check Email For Confirmation');
 
+        //Back To Login
         return redirect()->route('login');
     }
 
     public function register_check_email(Request $request)
     {
         if ($request->register_email) {
-            $count = User::where('user_email', $request->register_email)->count();
+            $count = User::where('user_email', htmlspecialchars($request->register_email))->count();
 
             if ($count > 0) {
                 return false;
@@ -164,14 +166,19 @@ class AuthController extends Controller
 
     public function logout()
     {
+        //Clean Session
         Session::flush();
+
+        //Clean Cookie
         Cookie::queue(Cookie::forget('account'));
         Cookie::queue(Cookie::forget('access'));
 
+        //Flash Message
         Session::flash('icon', 'success');
         Session::flash('alert', 'Logout Success');
         Session::flash('subalert', 'Login Again For Use Application');
 
+        //Back To Login
         return redirect()->route('login');
     }
 
