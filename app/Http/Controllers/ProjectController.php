@@ -94,16 +94,15 @@ class ProjectController extends Controller
         Member::create($member);
 
         //Add To Log History (Owner Created Project)
-        $history = [
-            'history_user_id' => $user_id,
-            'history_project_id' => $query->project_id,
-            'history_subject' =>  User::find($user_id)->user_name,
-            'history_verb' => __('history.create_project'),
-            'history_object' => $title,
-            'history_icon' => __('history.icon_pencil'),
-            'history_background' => __('history.bg_purple'),
-        ];
-        History::create($history);
+        insert_history(
+            $user_id, //User ID
+            $query->project_id, //Project ID
+            User::find($user_id)->user_name, //Subject
+            __('history.message_create_project'), //Verb
+            $title, //Object
+            __('history.icon_pencil'), //Icon
+            __('history.bg_purple') //Background
+        );
 
         //Flash Message
         Session::flash('icon', 'success');
@@ -157,6 +156,8 @@ class ProjectController extends Controller
             ->where('member_project_id', $project_id)
             ->count();
 
+        //History List
+        $data["history"] = History::where('history_project_id', $project_id)->orderBy('history_id', 'desc')->get();
 
         return view('project.project_detail', compact('data'));
     }

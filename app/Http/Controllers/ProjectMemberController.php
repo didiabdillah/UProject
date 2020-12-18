@@ -77,14 +77,15 @@ class ProjectMemberController extends Controller
             Member::create($data);
 
             //Add To Log History (Owner Added Member)
-            $history = [
-                'history_user_id' => $user_id,
-                'history_project_id' => $project_id,
-                'history_subject' => User::find($user_id)->user_name,
-                'history_verb' => __('history.add_member'),
-                'history_object' => User::find($member)->user_name
-            ];
-            History::create($history);
+            insert_history(
+                $user_id, //User ID
+                $project_id, //Project ID
+                User::find($user_id)->user_name, //Subject
+                __('history.message_add_member'), //Verb
+                User::find($member)->user_name, //Object
+                __('history.icon_user_plus'), //Icon
+                __('history.bg_blue') //Background
+            );
         }
 
         //Flash Message
@@ -121,14 +122,15 @@ class ProjectMemberController extends Controller
         Member::destroy($member_id);
 
         //Add To Log History (Owner Remove Member)
-        $history = [
-            'history_user_id' => $user_id,
-            'history_project_id' => $project_id,
-            'history_subject' => User::find($user_id)->user_name,
-            'history_verb' => __('history.remove_member'),
-            'history_object' => User::find($member_user_id)->user_name
-        ];
-        History::create($history);
+        insert_history(
+            $user_id, //User ID
+            $project_id, //Project ID
+            User::find($user_id)->user_name, //Subject
+            __('history.message_remove_member'), //Verb
+            User::find($member_user_id)->user_name, //Object
+            __('history.icon_user_minus'), //Icon
+            __('history.bg_red') //Background
+        );
 
         //Flash Message
         Session::flash('icon', 'success');

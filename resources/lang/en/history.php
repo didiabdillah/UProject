@@ -20,5 +20,5 @@ return [
     'icon_trash' => 'fas fa-trash',
     'icon_unchecked' => 'fas fa-window-close',
     'icon_checked' => 'fa fa-check-square',
-    'icon_pencil' => 'fa fa-pencil',
+    'icon_pencil' => 'fa fa-pencil-alt',
 ];

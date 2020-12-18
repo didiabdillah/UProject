@@ -285,63 +285,19 @@
                                             <div class="timeline">
                                                 <!-- /.timeline-label -->
                                                 <!-- timeline item -->
+                                                @foreach($data["history"] as $history)
                                                 <div>
                                                     <div class="timeline-item">
-                                                        <span class="time"><i class="fas fa-clock"></i> 12:05</span>
-                                                        <h3 class="timeline-header"><a href="#">Support Team </a> </h3>
+                                                        <span class="time"><i class="fas fa-clock"></i> {{$history->created_at}}</span>
+                                                        <h3 class="timeline-header"><a href="{{route('profile', $history->history_user_id)}}">{{$history->history_subject}} </a> </h3>
                                                         <div class="timeline-body">
-                                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem voluptas delectus eveniet doloremque? Soluta nisi at labore architecto consequuntur corporis obcaecati aperiam commodi assumenda ipsum asperiores, ea consequatur harum deleniti.
+                                                            {{$history->history_verb}} <b>{{$history->history_object}}</b>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- END timeline item -->
-                                                <!-- timeline item -->
-                                                <div>
-                                                    <div class="timeline-item">
-                                                        <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
-                                                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> </h3>
-                                                        <div class="timeline-body">
-                                                            accepted your friend request
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END timeline item -->
-                                                <!-- timeline item -->
-                                                <div>
-                                                    <div class="timeline-item">
-                                                        <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
-                                                        <h3 class="timeline-header"><a href="#">Jay White</a> </h3>
-                                                        <div class="timeline-body">
-                                                            commented on your post
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                                 <!-- END timeline item -->
 
-                                                <!-- /.timeline-label -->
-                                                <!-- timeline item -->
-                                                <div>
-                                                    <div class="timeline-item">
-                                                        <span class="time"><i class="fas fa-clock"></i> 2 days ago</span>
-                                                        <h3 class="timeline-header"><a href="#">Mina Lee</a> </h3>
-                                                        <div class="timeline-body">
-                                                            uploaded new photos
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END timeline item -->
-                                                <!-- timeline item -->
-                                                <div>
-                                                    <div class="timeline-item">
-                                                        <span class="time"><i class="fas fa-clock"></i> 5 days ago</span>
-
-                                                        <h3 class="timeline-header"><a href="#">Mr. Doe</a></h3>
-                                                        <div class="timeline-body">
-                                                            shared a video
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- END timeline item -->
                                             </div>
                                         </div>
                                         <!-- /.col -->
@@ -352,7 +308,7 @@
                             <!--/.direct-chat-messages-->
                             <div class="card-footer">
                                 <div class="text-center">
-                                    <a href="{{route('project_history', 1)}}">
+                                    <a href="{{route('project_history', $data['project']->project_id)}}">
                                         View All History
                                     </a>
                                 </div>
