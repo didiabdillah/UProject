@@ -66,31 +66,43 @@ class AuthController extends Controller
                     //Goto User Home
                     return redirect()->route('home');
                 } else {
-                    Session::flash('icon', 'error');
-                    Session::flash('alert', 'Login Failed');
-                    Session::flash('subalert', 'Wrong Password');
+                    //Flash Message
+                    flash_alert(
+                        __('alert.icon_error'), //Icon
+                        'Login Failed', //Alert Message 
+                        'Wrong Password' //Sub Alert Message
+                    );
 
                     return redirect()->back();
                 }
             } else {
-                Session::flash('icon', 'error');
-                Session::flash('alert', 'Login Failed');
-                Session::flash('subalert', 'Wrong Email');
+                //Flash Message
+                flash_alert(
+                    __('alert.icon_error'), //Icon
+                    'Login Failed', //Alert Message 
+                    'Wrong Email' //Sub Alert Message
+                );
 
                 return redirect()->back();
             }
         } else {
-            Session::flash('icon', 'error');
-            Session::flash('alert', 'Login Failed');
-            Session::flash('subalert', 'Account Not Found');
+            //Flash Message
+            flash_alert(
+                __('alert.icon_error'), //Icon
+                'Login Failed', //Alert Message 
+                'Account Not Found' //Sub Alert Message
+            );
 
             return redirect()->back();
         }
 
         //If Bug Not Through Filtering Process Above
-        Session::flash('icon', 'error');
-        Session::flash('alert', 'Login Failed');
-        Session::flash('subalert', 'Something Wrong');
+        //Flash Message
+        flash_alert(
+            __('alert.icon_error'), //Icon
+            'Login Failed', //Alert Message 
+            'Something Wrong' //Sub Alert Message
+        );
 
         return redirect()->back();
     }
@@ -125,9 +137,13 @@ class AuthController extends Controller
         //Check Is Email Already Registered
         $count = User::where('user_email', $request->register_email)->count();
         if ($count > 0) {
-            Session::flash('icon', 'error');
-            Session::flash('alert', 'Register Failed');
-            Session::flash('subalert', 'Email Not Available');
+            //Flash Message
+            flash_alert(
+                __('alert.icon_error'), //Icon
+                'Register Failed', //Alert Message 
+                'Email Not Available' //Sub Alert Message
+            );
+
             return redirect()->back();
         }
 
@@ -143,9 +159,11 @@ class AuthController extends Controller
         User::create($data);
 
         //Flash Message
-        Session::flash('icon', 'success');
-        Session::flash('alert', 'Register Success');
-        Session::flash('subalert', 'Please Check Email For Confirmation');
+        flash_alert(
+            __('alert.icon_success'), //Icon
+            'Register Success', //Alert Message 
+            'Please Check Email For Confirmation' //Sub Alert Message
+        );
 
         //Back To Login
         return redirect()->route('login');
@@ -174,9 +192,11 @@ class AuthController extends Controller
         Cookie::queue(Cookie::forget('access'));
 
         //Flash Message
-        Session::flash('icon', 'success');
-        Session::flash('alert', 'Logout Success');
-        Session::flash('subalert', 'Login Again For Use Application');
+        flash_alert(
+            __('alert.icon_success'), //Icon
+            'Logout Success', //Alert Message 
+            'Login Again For Use Application' //Sub Alert Message
+        );
 
         //Back To Login
         return redirect()->route('login');

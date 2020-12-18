@@ -105,9 +105,11 @@ class ProjectController extends Controller
         );
 
         //Flash Message
-        Session::flash('icon', 'success');
-        Session::flash('alert', 'Success');
-        Session::flash('subalert', 'Project Created');
+        flash_alert(
+            __('alert.icon_success'), //Icon
+            'Success', //Alert Message 
+            'Project Created' //Sub Alert Message
+        );
 
         //Back To Project
         return redirect()->route('project');

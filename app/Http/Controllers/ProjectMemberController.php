@@ -89,9 +89,11 @@ class ProjectMemberController extends Controller
         }
 
         //Flash Message
-        Session::flash('icon', 'success');
-        Session::flash('alert', 'Add Success');
-        Session::flash('subalert', 'Project member added');
+        flash_alert(
+            __('alert.icon_success'), //Icon
+            'Add Success', //Alert Message 
+            'Project member added' //Sub Alert Message
+        );
 
         //Back To Project member
         return redirect()->route('project_member', $project_id);
@@ -111,9 +113,12 @@ class ProjectMemberController extends Controller
 
         //Check Is Remove Owner
         if ($member_id == $owner) {
-            Session::flash('icon', 'error');
-            Session::flash('alert', 'Remove Failed');
-            Session::flash('subalert', 'Cannot remove owner');
+            //Flash Message
+            flash_alert(
+                __('alert.icon_error'), //Icon
+                'Remove Failed', //Alert Message 
+                'Cannot remove owner' //Sub Alert Message
+            );
 
             return redirect()->route('project_member', $project_id);
         }
@@ -133,9 +138,11 @@ class ProjectMemberController extends Controller
         );
 
         //Flash Message
-        Session::flash('icon', 'success');
-        Session::flash('alert', 'Remove Success');
-        Session::flash('subalert', 'Project member removed');
+        flash_alert(
+            __('alert.icon_success'), //Icon
+            'Remove Success', //Alert Message 
+            'Project member removed' //Sub Alert Message
+        );
 
         //Back To Project Member
         return redirect()->route('project_member', $project_id);
