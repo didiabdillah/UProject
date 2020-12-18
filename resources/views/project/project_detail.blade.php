@@ -288,7 +288,7 @@
                                                 @foreach($data["history"] as $history)
                                                 <div>
                                                     <div class="timeline-item">
-                                                        <span class="time"><i class="fas fa-clock"></i> {{$history->created_at}}</span>
+                                                        <span class="time"><i class="fas fa-clock"></i> {{$history->created_at->diffForHumans()}}</span>
                                                         <h3 class="timeline-header"><a href="{{route('profile', $history->history_user_id)}}">{{$history->history_subject}} </a> </h3>
                                                         <div class="timeline-body">
                                                             {{$history->history_verb}} <b>{{$history->history_object}}</b>

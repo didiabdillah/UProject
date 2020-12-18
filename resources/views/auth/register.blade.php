@@ -73,7 +73,7 @@
                     </div>
                     @enderror
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-1">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
@@ -102,12 +102,15 @@
                 </div>
             </form>
 
-            <div class="social-auth-links text-center">
-                <a href="#" class="btn btn-block btn-danger">
-                    <i class="fab fa-google mr-2"></i>
-                    Sign up using Google
+            <div class="social-auth-links text-center mt-2 mb-2">
+                <a href="{{route('login_google')}}" class="btn btn-block btn-danger">
+                    <i class="fab fa-google mr-2"></i> Sign up using Google
+                </a>
+                <a href="{{route('login_github')}}" class="btn btn-block btn-dark">
+                    <i class="fab fa-github mr-2"></i> Sign up using Github
                 </a>
             </div>
+            <!-- /.social-auth-links -->
 
             <p class="text-center">
                 <a href="{{route('login')}}" class="text-center">Back to login</a>

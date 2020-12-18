@@ -32,7 +32,7 @@
                             <div>
                                 <i class="{{$data->history_icon}} {{$data->history_background}}"></i>
                                 <div class="timeline-item">
-                                    <span class="time"><i class="fas fa-clock"></i> {{$data->created_at}}</span>
+                                    <span class="time"><i class="fas fa-clock"></i> {{$data->created_at->diffForHumans()}}</span>
                                     <h3 class="timeline-header"><a href="{{route('profile', $data->history_user_id)}}">{{$data->history_subject}}</a></h3>
 
                                     <div class="timeline-body">
