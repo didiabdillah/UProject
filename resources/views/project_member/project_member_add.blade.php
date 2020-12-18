@@ -20,7 +20,7 @@
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Add Project Member</h3>
-                </div>
+                </div> 
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form action="{{route('project_member_add_post', $project_id)}}" method="POST">

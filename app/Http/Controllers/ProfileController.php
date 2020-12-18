@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 
 use App\Models\User;
 
@@ -10,6 +12,12 @@ class ProfileController extends Controller
 {
     public function index($user_id)
     {
+        //Check Is Exist User
+        if (Session::get('user_id') != $user_id) {
+            return redirect()->route('not_found');
+        }
+
+        //Get User Data
         $user = User::firstWhere('user_id', $user_id);
 
         return view('profile.profile', ['user' => $user]);
@@ -17,8 +25,57 @@ class ProfileController extends Controller
 
     public function settings($user_id)
     {
+        //Check Is Valid User
+        if (Session::get('user_id') != $user_id) {
+            return redirect()->route('forbidden');
+        }
+
+        //Get User Data
         $user = User::firstWhere('user_id', $user_id);
 
-        return view('profile.settings', ['user' => $user]);
+        return view('profile.settings', ['user' => $user, 'user_id' => $user_id]);
+    }
+
+    public function settings_user(Request $request, $user_id)
+    {
+        // Input Validation
+        $request->validate([
+            'user_name'  => 'required',
+            'user_email'  => 'required|email:rfc,dns'
+        ]);
+
+        //Check Is Valid User
+        if ($request->session()->get('user_id') != $user_id) {
+            return redirect()->route('forbidden');
+        }
+
+        //Update Data
+        User::where('user_id', $user_id)
+            ->update([
+                'user_name' => $request->user_name,
+                'user_email' => $request->user_email
+            ]);
+
+        //Update Session
+        $data = [
+            'user_name' => $request->user_name,
+            'user_email' => $request->user_email,
+        ];
+        $request->session()->put($data);
+
+        //Update Cookie If Exist
+        if (Cookie::get('account')) {
+            Cookie::queue(Cookie::forget('account'));
+            Cookie::queue(Cookie::make('account', $request->user_email, 10));
+        }
+
+        //Flash Message
+        flash_alert(
+            __('alert.icon_success'),
+            'Success',
+            'Account updated'
+        );
+
+        return redirect()->back();
     }
 }

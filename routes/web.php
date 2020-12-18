@@ -94,5 +94,7 @@ Route::group(['middleware' => ['is_Login']], function () {
 
         //Profile Setting
         Route::get('{user_id}/settings', 'ProfileController@settings')->name('profile_settings');
+        Route::put('{user_id}/settings', 'ProfileController@settings_user')->name('profile_settings_user');
+        Route::patch('{user_id}/settings', 'ProfileController@settings_password')->name('profile_settings_password');
     });
 });

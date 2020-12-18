@@ -3,6 +3,12 @@
 @section('title', Str::words($user->user_name, 3))
 
 @section('user_page')
+
+<!-- Flash Alert -->
+@if (Session::has('alert'))
+<div id="flash-alert" data-flashalerticon="{{ Session::get('icon') }}" data-flashalert="{{ Session::get('alert') }}" data-flashsubalert="{{ Session::get('subalert') }}"></div>
+@endif
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -36,7 +42,7 @@
                                     </li>
                                 </ul>
 
-                                @if(Request::segment(2) == Session::get('user_id'))
+                                @if($user_id == Session::get('user_id'))
                                 <a href="#" class="btn btn-primary btn-block"><b><i class="fas fa-camera"></i> Upload Profile Picture</b></a>
                                 @endif
                             </div>
@@ -51,7 +57,7 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link" href="{{route('profile', Session::get('user_id'))}}">Profile</a></li>
-                                    @if(Request::segment(2) == Session::get('user_id'))
+                                    @if($user_id == Session::get('user_id'))
                                     <li class="nav-item"><a class="nav-link active" href="#">Settings</a></li>
                                     @endif
                                 </ul>
@@ -63,7 +69,7 @@
                                     </div>
                                     <!-- /.tab-pane -->
 
-                                    @if(Request::segment(2) == Session::get('user_id'))
+                                    @if($user_id == Session::get('user_id'))
                                     <div class="tab-pane  active" id="settings">
                                         <!-- general form elements -->
                                         <div class="card card-success">
@@ -72,15 +78,27 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <!-- form start -->
-                                            <form>
+                                            <form action="{{route('profile_settings_user', $user_id)}}" method="POST">
+                                                @csrf
+                                                @method('put')
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Full Name</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" value="{{$user->user_name}}">
+                                                        <input name="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" id="exampleInputEmail1" placeholder="Enter name" value="{{$user->user_name}}">
+                                                        @error('user_name') 
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{$user->user_email}}">
+                                                        <input name="user_email" type="email" class="form-control @error('user_email') is-invalid @enderror" id="exampleInputEmail1" placeholder="Enter email" value="{{$user->user_email}}">
+                                                        @error('user_email') 
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -100,7 +118,9 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <!-- form start -->
-                                            <form>
+                                            <form action="{{route('profile_settings_password', $user_id)}}" method="POST">
+                                                @csrf 
+                                                @method('patch')
                                                 <div class="card-body">
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Old Password</label>
