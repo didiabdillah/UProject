@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +34,14 @@ Route::group(['middleware' => ['is_Not_Login']], function () {
 
     //Change To New Password (Forgot Password)
     Route::get('/change', 'AuthController@change_password')->name('change_password');
+
+    //Login Via Google
+    Route::get('login/google', 'AuthController@redirectToGoogle')->name('login_google');
+    Route::get('login/google/callback', 'AuthController@handleGoogleCallback')->name('callback_google');
+
+    //Login Via Github
+    Route::get('login/github', 'AuthController@redirectToGithub')->name('login_github');
+    Route::get('login/github/callback', 'AuthController@handleGithubCallback')->name('callback_github');
 });
 
 //USER PAGE (LOGIN REQUIRED)

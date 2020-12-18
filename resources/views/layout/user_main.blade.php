@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="{{URL::asset('assets/css/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{URL::asset('assets/css/adminlte.css')}}">
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -70,10 +69,10 @@
                             <a href="{{route('logout')}}" class="btn btn-default btn-flat float-right">Sign out</a>
                         </li>
                     </ul>
-            </ul>
+                </ul>
         </nav>
         <!-- /.navbar -->
-
+        
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
@@ -105,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -141,7 +140,7 @@
             <div class="float-right d-none d-sm-block" style="margin-top: -13px;">
                 <b>Copyright &copy; {{date('Y')}} UProject </b>All rights reserved.
             </div>
-
+            
         </footer>
 
         <!-- Control Sidebar -->
@@ -152,7 +151,7 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery -->
+        <!-- jQuery -->
     <script src="{{URL::asset('assets/js/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{URL::asset('assets/js/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -181,6 +180,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{URL::asset('assets/js/demo.js')}}"></script>
     <!-- Page specific script -->
+    
     <script>
         $(function() {
             //Initialize Select2 Elements
@@ -204,6 +204,7 @@
             bsCustomFileInput.init();
         });
     </script>
+
 </body>
 
 </html>

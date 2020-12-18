@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
+use Laravel\Socialite\Facades\Socialite;
 
 use App\Rules\Captcha;
 
@@ -215,5 +216,39 @@ class AuthController extends Controller
     public function change_password()
     {
         return view('auth.change_password');
+    }
+
+    //Google Login
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    //Google Callback
+    public function handleGoogleCallback()
+    {
+        $user = Socialite::driver('google')->user();
+
+        dd($user);
+
+        //Return Home After Login
+        return redirect()->route('home');
+    }
+
+    //Github Login
+    public function redirectToGithub()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    //Github Callback
+    public function handleGithubCallback()
+    {
+        $user = Socialite::driver('github')->user();
+
+        dd($user);
+
+        //Return Home After Login
+        return redirect()->route('home');
     }
 }

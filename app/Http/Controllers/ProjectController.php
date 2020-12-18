@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Pusher\Pusher;
 
 use App\Models\Project;
 use App\Models\Member;
@@ -16,8 +17,8 @@ class ProjectController extends Controller
     //Project List
     public function index()
     {
-        // TEST
         $data = Project::all();
+        // TEST
 
         // foreach ($data as $d) {
         //     foreach ($d->task as $t) {

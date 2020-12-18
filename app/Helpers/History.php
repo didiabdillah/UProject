@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\History;
+use Pusher\Pusher;
+
 function insert_history($user_id, $project_id, $subject, $verb, $object, $icon, $background)
 {
     $history = [
@@ -11,5 +14,5 @@ function insert_history($user_id, $project_id, $subject, $verb, $object, $icon, 
         'history_icon' => $icon,
         'history_background' => $background
     ];
-    App\Models\History::create($history);
+    History::create($history);
 }

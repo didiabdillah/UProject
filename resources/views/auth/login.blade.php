@@ -71,10 +71,14 @@
                     <!-- /.col -->
                 </div>
             </form>
+            </form>
 
             <div class="social-auth-links text-center mt-2 mb-3">
-                <a href="#" class="btn btn-block btn-danger">
+                <a href="{{route('login_google')}}" class="btn btn-block btn-danger">
                     <i class="fab fa-google mr-2"></i> Sign in using Google
+                </a>
+                <a href="{{route('login_github')}}" class="btn btn-block btn-dark">
+                    <i class="fab fa-github mr-2"></i> Sign in using Github
                 </a>
             </div>
             <!-- /.social-auth-links -->
