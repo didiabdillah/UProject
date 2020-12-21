@@ -27,7 +27,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Multiple</label>
+                            <label>Members</label>
                             <select class="select2 @error('member') is-invalid @enderror" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="member[]">
                                 @foreach($members as $member)
                                 <option value="{{$member->user_id}}">{{$member->user_name . " (" . $member->user_email . ")"}}</option>

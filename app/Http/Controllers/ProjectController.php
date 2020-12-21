@@ -51,7 +51,10 @@ class ProjectController extends Controller
     //Project Add
     public function insert()
     {
-        return view('project.project_add');
+        //Member List
+        $members = DB::table("users")->where('user_id', '!=', Session::get('user_id'))->get();
+
+        return view('project.project_add', ['members' => $members]);
     }
 
     //Project Add Process
@@ -60,7 +63,7 @@ class ProjectController extends Controller
         // Input Validation
         $request->validate([
             'title'  => 'required|max:150',
-            'description'  => 'max:65500',
+            'description'  => 'required|max:65500',
             'image'  => 'mimetypes:image/png,image/jpeg,image/gif'
         ]);
 
@@ -104,6 +107,31 @@ class ProjectController extends Controller
             __('history.icon_pencil'), //Icon
             __('history.bg_purple') //Background
         );
+
+        //Insert Data Member
+        if ($request->member != NULL) {
+            foreach ($request->member as $member) {
+                //Insert Data
+                $data = [
+                    'member_user_id' => $member,
+                    'member_project_id' => $query->project_id,
+                    'member_role' => 'member',
+                    'member_status' => 'active'
+                ];
+                Member::create($data);
+
+                //Add To Log History (Owner Added Member)
+                insert_history(
+                    $user_id, //User ID
+                    $query->project_id, //Project ID
+                    User::find($user_id)->user_name, //Subject
+                    __('history.message_add_member'), //Verb
+                    User::find($member)->user_name, //Object
+                    __('history.icon_user_plus'), //Icon
+                    __('history.bg_blue') //Background
+                );
+            }
+        }
 
         //Flash Message
         flash_alert(

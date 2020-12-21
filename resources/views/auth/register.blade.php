@@ -76,7 +76,7 @@
                 <div class="input-group mb-1">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+                            <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}" {{--style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"--}}></div>
                             @if($errors->has('g-recaptcha-response'))
                             <small class="text-danger">
                                 {{$errors->first('g-recaptcha-response')}}
@@ -95,24 +95,25 @@
                         </div>
                     </div>
                     <!-- /.col -->
-                    <div class="col-5">
+                </div>
+                <div class="row">
+                    <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block" id="register_submit">Register</button>
                     </div>
-                    <!-- /.col -->
                 </div>
             </form>
 
-            <div class="social-auth-links text-center mt-2 mb-2">
+            {{-- <div class="social-auth-links text-center mt-2 mb-2">
                 <a href="{{route('login_google')}}" class="btn btn-block btn-danger">
                     <i class="fab fa-google mr-2"></i> Sign up using Google
                 </a>
                 <a href="{{route('login_github')}}" class="btn btn-block btn-dark">
                     <i class="fab fa-github mr-2"></i> Sign up using Github
                 </a>
-            </div>
+            </div> --}}
             <!-- /.social-auth-links -->
 
-            <p class="text-center">
+            <p class="text-center mt-3">
                 <a href="{{route('login')}}" class="text-center">Back to login</a>
             </p>
         </div>

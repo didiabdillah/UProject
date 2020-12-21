@@ -51,7 +51,7 @@
                             <!-- TO DO List -->
                             <div class="card direct-chat direct-chat-primary">
                                 <div class="card-header">
-                                    <a href="{{route('project_detail', $project->project_id)}}" class="text-black">
+                                    <a href="{{route('project_detail',$project->project_id)}}" class="text-black">
                                         <h3 class="card-title">
                                             <i class="fas fa-clipboard mr-1"></i>
                                             {{$project->project_title}}

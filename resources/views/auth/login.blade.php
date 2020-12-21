@@ -48,7 +48,7 @@
                     @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+                    <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}" {{--style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"--}}></div>
                     @if($errors->has('g-recaptcha-response'))
                     <small class="text-danger">
                         {{$errors->first('g-recaptcha-response')}}
@@ -73,7 +73,7 @@
             </form>
             </form>
 
-            <div class="social-auth-links text-center mt-2 mb-3">
+            <div class="social-auth-links text-center mt-3 mb-3">
                 <a href="{{route('login_google')}}" class="btn btn-block btn-danger">
                     <i class="fab fa-google mr-2"></i> Sign in using Google
                 </a>

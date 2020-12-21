@@ -64,6 +64,20 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>Members</label>
+                            <select class="select2 @error('member') is-invalid @enderror" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" name="member[]">
+                                @foreach($members as $member)
+                                <option value="{{$member->user_id}}">{{$member->user_name . " (" . $member->user_email . ")"}}</option>
+                                @endforeach
+                            </select>
+                            @error('member')
+                            <div class="invalid-feedback">
+                                Please select users
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="active" name="active">
                                 <label class="form-check-label" for="active">Active</label>

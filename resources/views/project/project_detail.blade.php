@@ -35,7 +35,7 @@
                                     <!-- TO DO List -->
                                     <div class="card direct-chat direct-chat-primary">
                                         <div class="card-header">
-                                            <a href="{{route('project_task', 1)}}">
+                                            <a href="{{route('project_task', $data["project"]->project_id)}}">
                                                 <h3 class="card-title">
                                                     <i class="fas fa-clipboard mr-1"></i>
                                                     <h3 class="card-title">{{$data["project"]->project_title}}</h3>
@@ -94,7 +94,7 @@
                         <!-- DIRECT CHAT -->
                         <div class="card direct-chat direct-chat-primary">
                             <div class="card-header">
-                                <a href="{{route('project_discussion', 1)}}">
+                                <a href="{{route('project_discussion', $data["project"]->project_id)}}">
                                     <h3 class="card-title">Discussion</h3>
                                 </a>
 
@@ -291,7 +291,7 @@
                                                         <span class="time"><i class="fas fa-clock"></i> {{$history->created_at->diffForHumans()}}</span>
                                                         <h3 class="timeline-header"><a href="{{route('profile', $history->history_user_id)}}">{{$history->history_subject}} </a> </h3>
                                                         <div class="timeline-body">
-                                                            {{$history->history_verb}} <b>{{$history->history_object}}</b>
+                                                            <small>{{$history->history_verb}} <b>{{$history->history_object}}</b></small>
                                                         </div>
                                                     </div>
                                                 </div>
