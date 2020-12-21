@@ -11,4 +11,9 @@ class User extends Model
     protected $fillable = [
         'user_name', 'user_email', 'user_password', 'user_role', 'user_email_verified_at', 'user_image'
     ];
+
+    public function member()
+    {
+        return $this->hasMany('App\Models\Member', 'member_user_id');
+    }
 }

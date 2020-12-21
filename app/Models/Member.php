@@ -19,4 +19,9 @@ class Member extends Model
     {
         return $this->belongsTo('App\Models\Project', 'member_project_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'member_user_id');
+    }
 }
