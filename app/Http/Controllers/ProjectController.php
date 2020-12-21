@@ -17,7 +17,10 @@ class ProjectController extends Controller
     //Project List
     public function index()
     {
-        $data = Project::all();
+        $project = Project::whereHas('member', function ($query) {
+            $query->where('member_user_id', Session::get('user_id'));
+        })->orderBy('project_title', 'asc')->get();
+
         // TEST
 
         // foreach ($data as $d) {
@@ -45,7 +48,7 @@ class ProjectController extends Controller
         // $data["project"] = $project;
         // $data["task"] = $task;
 
-        return view('project.project', ['data' => $data]);
+        return view('project.project', ['projects' => $project]);
     }
 
     //Project Add

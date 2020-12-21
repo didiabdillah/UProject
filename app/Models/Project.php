@@ -21,4 +21,9 @@ class Project extends Model
     {
         return $this->hasMany('App\Models\Task', 'task_project_id');
     }
+
+    public function member()
+    {
+        return $this->hasMany('App\Models\Member', 'member_project_id');
+    }
 }

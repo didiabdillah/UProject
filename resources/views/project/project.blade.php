@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="row">
-                    @foreach ($data as $project)
+                    @foreach ($projects as $project)
                     <div class="col-md-6 col-lg-4">
                         <!-- Default box -->
                         <div class="card">
@@ -64,9 +64,14 @@
                                 <!-- /.card-header -->
 
                                 <!-- Progress Bar -->
+                                @php 
+                                    $task_finish = $project->task()->where('task_finish', 1)->count();
+                                    $task_total = $project->task()->count();
+                                    $percentage = ($task_total > 0) ? (int) ($task_finish * 100 / $task_total) : 0;
+                                @endphp
                                 <div class="progress mb-3" style="height: 1.75rem;">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                        <span>90% Complete (success)</span>
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$percentage}}%">
+                                        <span>{{$percentage}}% Complete</span>
                                     </div>
                                 </div>
 
@@ -74,14 +79,18 @@
                                     <div class="direct-chat-messages" style="height: 250px;">
                                         <ul class="todo-list" data-widget="todo-list">
                                             @foreach($project->task as $task)
-                                            <li>
+                                            <li class="@if($task->task_finish == true && $task->task_user_id != Session::get('user_id') ){{'done'}}@endif">
                                                 <!-- checkbox -->
                                                 <div class="icheck-primary d-inline ml-2">
-                                                    <input type="checkbox" value="" name="todo{{$task->task_id}}" id="todoCheck{{$task->task_id}}">
+                                                    @if($task->task_user_id == Session::get('user_id'))
+                                                    <input type="checkbox" value="" name="task{{$task->task_id}}" id="todoCheck{{$task->task_id}}" @if($task->task_finish == true){{'checked'}}@endif>
                                                     <label for="todoCheck{{$task->task_id}}"></label>
+                                                    @endif
                                                 </div>
-                                                <span class="text">{{$task->task_title}}</span>
 
+                                                <!-- todo text -->
+                                                <span class="text">{{$task->task_title}}</span>
+                                                <!-- General tools such as edit or delete-->
                                                 <div class="tools">
                                                     <i class="fas fa-edit"></i>
                                                     <i class="fas fa-trash"></i>
