@@ -98,3 +98,5 @@ Route::group(['middleware' => ['is_Login']], function () {
         Route::patch('{user_id}/settings', 'ProfileController@settings_password')->name('profile_settings_password');
     });
 });
+// TESTING
+Route::get('test', 'Controller@faker');

@@ -12,13 +12,13 @@ class ProfileController extends Controller
 {
     public function index($user_id)
     {
-        //Check Is Exist User
-        if (Session::get('user_id') != $user_id) {
-            return redirect()->route('not_found');
-        }
-
         //Get User Data
         $user = User::firstWhere('user_id', $user_id);
+
+        //Check Is Exist User
+        if (!$user) {
+            return redirect()->route('not_found');
+        }
 
         return view('profile.profile', ['user' => $user]);
     }

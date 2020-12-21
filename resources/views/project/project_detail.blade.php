@@ -46,7 +46,7 @@
 
                                         <!-- Progress Bar -->
                                         <div class="progress mb-3" style="height: 1.75rem;">
-                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$data["project_percentage"]}}%">
+                                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$data["project_percentage"]}}%">
                                                 <span>{{$data["project_percentage"]}}%</span>
                                             </div>
                                         </div>
