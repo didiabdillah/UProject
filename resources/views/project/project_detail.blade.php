@@ -70,7 +70,7 @@
                                                         </div>
 
                                                         <!-- todo text -->
-                                                        <span class="text">{{$task->task_title . ' (' . $task->task_deadline . ')'}}</span>
+                                                        <span class="text">{{$task->task_title . ' (' . Carbon\Carbon::parse($task->task_deadline)->isoFormat('dddd, D MMMM Y') . ')'}}</span>
                                                         <!-- General tools such as edit or delete-->
                                                         <div class="tools">
                                                             <i class="fas fa-edit"></i>
@@ -90,7 +90,7 @@
                                     <!-- /.card -->
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> {{$data["project"]->project_deadline}}</button>
+                                        <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> {{Carbon\Carbon::parse($data["project"]->project_deadline)->isoFormat('dddd, D MMMM Y')}}</button>
                                     </div>
                                     <!-- /.card-footer-->
                                 </div>

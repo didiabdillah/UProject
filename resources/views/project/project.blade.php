@@ -108,7 +108,7 @@
                             <!-- /.card -->
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> {{$project->project_deadline}}</button>
+                                <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> {{Carbon\Carbon::parse($project->project_deadline)->isoFormat('dddd, D MMMM Y')}}</button>
                             </div>
                             <!-- /.card-footer-->
                         </div>

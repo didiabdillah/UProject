@@ -6,14 +6,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Faker\Generator as Faker;
+use Illuminate\Support\Carbon;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function faker(Faker $faker)
+    public function faker()
     {
-        dd($faker->date($format = 'Y-m-d H:i:s', $max = '+50 years'));
+        dd(Carbon::parse('2020-12-25 11:12:13')->isoFormat('dddd, D MMMM Y'));
+        // ->isoFormat('dddd, D MMMM Y')
     }
 }
