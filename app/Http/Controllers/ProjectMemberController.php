@@ -25,12 +25,6 @@ class ProjectMemberController extends Controller
             ->orderBy('users.user_name', 'asc')
             ->get();
 
-        //Member Count
-        $data["member_count"] = DB::table('members')
-            ->join('users', 'members.member_user_id', '=', 'users.user_id')
-            ->where('member_project_id', $project_id)
-            ->count();
-
         //Is Owner 
         $owner = Member::where('member_user_id', Session::get('user_id'))
             ->where('member_project_id', $project_id)

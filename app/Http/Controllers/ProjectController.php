@@ -160,42 +160,12 @@ class ProjectController extends Controller
         //Project Detail
         $data["project"] = Project::find($project_id);
 
-        //Project Percentage 
-        $task_total = DB::table('tasks')
-            ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
-            ->where('project_id', $project_id)
-            ->count();
-
-        $task_finish = DB::table('tasks')
-            ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
-            ->where('project_id', $project_id)
-            ->where('task_finish', 1)
-            ->count();
-
-        if ($task_total > 0) {
-            $data["project_percentage"] = (int) ($task_finish * 100 / $task_total);
-        } else {
-            $data["project_percentage"] = 0;
-        }
-
-        //Task List
-        // $data["task"] = DB::table('tasks')
-        //     ->join('projects', 'tasks.task_project_id', '=', 'projects.project_id')
-        //     ->where('project_id', $project_id)
-        //     ->get();
-
         //Member List
         $data["member"] = DB::table('members')
             ->join('users', 'members.member_user_id', '=', 'users.user_id')
             ->where('member_project_id', $project_id)
             ->orderBy('users.user_name', 'asc')
             ->get();
-
-        //Member Count
-        $data["member_count"] = DB::table('members')
-            ->join('users', 'members.member_user_id', '=', 'users.user_id')
-            ->where('member_project_id', $project_id)
-            ->count();
 
         //History List
         $data["history"] = History::where('history_project_id', $project_id)->orderBy('history_id', 'desc')->get();

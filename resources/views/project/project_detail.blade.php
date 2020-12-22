@@ -51,9 +51,14 @@
                                         <!-- /.card-header -->
 
                                         <!-- Progress Bar -->
+                                        @php 
+                                        $task_finish = $data["project"]->task()->where('task_finish', 1)->count();
+                                        $task_total = $data["project"]->task()->count();
+                                        $percentage = ($task_total > 0) ? (int) ($task_finish * 100 / $task_total) : 0;
+                                        @endphp
                                         <div class="progress mb-3" style="height: 1.75rem;">
-                                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$data["project_percentage"]}}%">
-                                                <span>{{$data["project_percentage"]}}%</span>
+                                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{$percentage}}%">
+                                                <span>{{$percentage}}%</span>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -239,7 +244,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">MEMBERS</h3>
                                 <div class="card-tools">
-                                    <span class="badge badge-danger">{{$data["member_count"]}} Members</span>
+                                    <span class="badge badge-danger">{{$data["member"]->count()}} Members</span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
