@@ -234,21 +234,4 @@ class AuthController extends Controller
         //Return Home After Login
         return redirect()->route('home');
     }
-
-    //Github Login
-    public function redirectToGithub()
-    {
-        return Socialite::driver('github')->redirect();
-    }
-
-    //Github Callback
-    public function handleGithubCallback()
-    {
-        $user = Socialite::driver('github')->user();
-
-        dd($user);
-
-        //Return Home After Login
-        return redirect()->route('home');
-    }
 }

@@ -38,10 +38,6 @@ Route::group(['middleware' => ['is_Not_Login']], function () {
     //Login Via Google
     Route::get('login/google', 'AuthController@redirectToGoogle')->name('login_google');
     Route::get('login/google/callback', 'AuthController@handleGoogleCallback')->name('callback_google');
-
-    //Login Via Github
-    Route::get('login/github', 'AuthController@redirectToGithub')->name('login_github');
-    Route::get('login/github/callback', 'AuthController@handleGithubCallback')->name('callback_github');
 });
 
 //USER PAGE (LOGIN REQUIRED)
@@ -78,7 +74,7 @@ Route::group(['middleware' => ['is_Login']], function () {
         //Project Member Detail
         Route::get('project/member', 'ProjectMemberController@index')->name('project_member');
         //Project Member Add
-        Route::get('project/member/add', 'ProjectMemberController@add')->name('project_member_add');
+        Route::get('project/member/add', 'ProjectMemberController@insert')->name('project_member_add');
         Route::post('project/member/add', 'ProjectMemberController@store')->name('project_member_add_post');
         //Project Member Remove
         Route::delete('project/member', 'ProjectMemberController@remove')->name('project_member_remove');

@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     protected $primaryKey = 'project_id';
+    public $incrementing = false;
 
     protected $fillable = [
+        'project_id',
         'project_user_id',
         'project_title',
         'project_description',

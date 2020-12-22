@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 use App\Models\Project;
 use App\Models\Member;
@@ -55,7 +55,7 @@ class ProjectController extends Controller
     public function insert()
     {
         //Member List
-        $members = DB::table("users")->where('user_id', '!=', Session::get('user_id'))->get();
+        $members = DB::table("users")->where('user_id', '!=', Session::get('user_id'))->orderBy('user_name', 'asc')->get();
 
         return view('project.project_add', ['members' => $members]);
     }
@@ -74,6 +74,7 @@ class ProjectController extends Controller
         $file = $request->file('image');
 
         //Initialize variable
+        $project_id = strtotime(date('Y-m-d H:i:s')) . str_replace('-', '', Str::uuid());
         $user_id = $request->session()->get('user_id');
         $title = htmlspecialchars($request->title);
         $desc = htmlspecialchars($request->description);
@@ -82,6 +83,7 @@ class ProjectController extends Controller
 
         //Insert Data Project
         $data = [
+            'project_id' => $project_id,
             'project_user_id' => $user_id,
             'project_title' => $title,
             'project_description' => $desc,

@@ -16,7 +16,7 @@ class CreateMembersTable extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->bigIncrements('member_id');
             $table->unsignedBigInteger('member_user_id');
-            $table->unsignedBigInteger('member_project_id');
+            $table->string('member_project_id', 255);
             $table->enum('member_role', ['owner', 'member']);
             $table->enum('member_status', ['active', 'deactive']);
 

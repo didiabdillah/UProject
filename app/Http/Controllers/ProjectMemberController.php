@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\Member;
-use App\Models\History;
 
 class ProjectMemberController extends Controller
 {
@@ -42,7 +41,7 @@ class ProjectMemberController extends Controller
     }
 
     //Add Member 
-    public function add($project_id)
+    public function insert($project_id)
     {
         //Project Detail
         $data["project"] = Project::firstWhere('project_id', $project_id);

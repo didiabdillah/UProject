@@ -16,7 +16,7 @@ class CreateDiscussionsTable extends Migration
         Schema::create('discussions', function (Blueprint $table) {
             $table->bigIncrements('discussion_id');
             $table->unsignedBigInteger('discussion_user_id');
-            $table->unsignedBigInteger('discussion_project_id');
+            $table->string('discussion_project_id', 255);
             $table->text('discussion_message');
             $table->string('discussion_file', 255)->nullable();
 
