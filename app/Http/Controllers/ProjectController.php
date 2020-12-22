@@ -18,36 +18,10 @@ class ProjectController extends Controller
     //Project List
     public function index()
     {
+        //Project List
         $project = Project::whereHas('member', function ($query) {
             $query->where('member_user_id', Session::get('user_id'));
         })->orderBy('project_title', 'asc')->get();
-
-        // TEST
-
-        // foreach ($data as $d) {
-        //     foreach ($d->task as $t) {
-        //         dump($t);
-        //     }
-        // }
-        // die;
-
-        // //Project List
-        // $project = DB::table('projects')
-        //     ->join('members', 'projects.project_id', '=', 'members.member_project_id')
-        //     ->where('member_user_id', Session::get('user_id'))
-        //     ->orderBy('projects.project_title', 'ASC')
-        //     ->get();
-
-        // //Task List
-        // $task = DB::table('projects')
-        //     ->join('members', 'projects.project_id', '=', 'members.member_project_id')
-        //     ->join('tasks', 'projects.project_id', '=', 'tasks.task_project_id')
-        //     ->where('member_user_id', Session::get('user_id'))
-        //     ->get();
-
-
-        // $data["project"] = $project;
-        // $data["task"] = $task;
 
         return view('project.project', ['projects' => $project]);
     }

@@ -82,7 +82,7 @@
                                             <li class="@if($task->task_finish == true && $task->task_user_id != Session::get('user_id') ){{'done'}}@endif">
                                                 <!-- checkbox -->
                                                 <div class="icheck-primary d-inline ml-2">
-                                                    @if($task->task_user_id == Session::get('user_id'))
+                                                    @if($task->task_user_id == Session::get('user_id') || $project->member()->where('member_user_id', Session::get('user_id'))->first()->member_role == 'owner')
                                                     <input type="checkbox" value="" name="task{{$task->task_id}}" id="todoCheck{{$task->task_id}}" @if($task->task_finish == true){{'checked'}}@endif>
                                                     <label for="todoCheck{{$task->task_id}}"></label>
                                                     @endif

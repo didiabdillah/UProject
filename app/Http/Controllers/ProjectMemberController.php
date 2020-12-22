@@ -16,7 +16,7 @@ class ProjectMemberController extends Controller
     public function index($project_id)
     {
         //Project Detail
-        $data["project"] = Project::firstWhere('project_id', $project_id);
+        $data["project"] = Project::find($project_id);
 
         //Member List
         $data["member"] = DB::table('members')
