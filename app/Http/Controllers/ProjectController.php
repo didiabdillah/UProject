@@ -77,7 +77,7 @@ class ProjectController extends Controller
         $file = $request->file('image');
 
         //Initialize variable
-        $project_id = strtotime(date('Y-m-d H:i:s')) . str_replace('-', '', Str::uuid());
+        $project_id = strtotime(now()) . hexdec(uniqid());
         $user_id = $request->session()->get('user_id');
         $title = htmlspecialchars($request->title);
         $desc = htmlspecialchars($request->description);
