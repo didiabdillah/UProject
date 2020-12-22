@@ -16,8 +16,8 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-6 col-sm-2 col-md-2">
-                    <a href="{{route('project_add')}}" class="btn btn-primary btn-lg mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Add Project</a>
+                <div class="col-12 col-sm-12 col-md-3">
+                    <a href="{{route('project_add')}}" class="btn btn-primary btn-lg mt-4 mb-3 btn-block"><i class="fas fa-plus"></i> Create a New Project</a>
                 </div>
                 <!-- /.col -->
             </div>
@@ -78,7 +78,7 @@
                                 <div class="card-body ">
                                     <div class="direct-chat-messages" style="height: 250px;">
                                         <ul class="todo-list" data-widget="todo-list">
-                                            @foreach($project->task as $task)
+                                            @foreach($project->task()->orderBy('task_user_id', 'asc')->get() as $task)
                                             <li class="@if($task->task_finish == true && $task->task_user_id != Session::get('user_id') ){{'done'}}@endif">
                                                 <!-- checkbox -->
                                                 <div class="icheck-primary d-inline ml-2">

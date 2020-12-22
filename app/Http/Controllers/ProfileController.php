@@ -52,21 +52,21 @@ class ProfileController extends Controller
         //Update Data
         User::where('user_id', $user_id)
             ->update([
-                'user_name' => $request->user_name,
-                'user_email' => $request->user_email
+                'user_name' => htmlspecialchars($request->user_name),
+                'user_email' => htmlspecialchars($request->user_email)
             ]);
 
         //Update Session
         $data = [
-            'user_name' => $request->user_name,
-            'user_email' => $request->user_email,
+            'user_name' => htmlspecialchars($request->user_name),
+            'user_email' => htmlspecialchars($request->user_email),
         ];
         $request->session()->put($data);
 
         //Update Cookie If Exist
         if (Cookie::get('account')) {
             Cookie::queue(Cookie::forget('account'));
-            Cookie::queue(Cookie::make('account', $request->user_email, 10));
+            Cookie::queue(Cookie::make('account', htmlspecialchars($request->user_email), 10));
         }
 
         //Flash Message

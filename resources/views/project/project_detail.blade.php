@@ -3,6 +3,12 @@
 @section('title', $data["project"]->project_title)
 
 @section('user_page')
+
+<!-- Flash Alert -->
+@if (Session::has('alert'))
+<div id="flash-alert" data-flashalerticon="{{ Session::get('icon') }}" data-flashalert="{{ Session::get('alert') }}" data-flashsubalert="{{ Session::get('subalert') }}"></div>
+@endif
+
 <!-- History Own Css -->
 <link rel="stylesheet" href="{{URL::asset('assets/css/HistoryOwnCSS.css')}}">
 
@@ -24,7 +30,7 @@
                                 <!-- Default box -->
                                 <div class="card ">
                                     <div class="card-header">
-                                        <a href="#" class="btn btn-primary float-left btn-sm">Create New Task</a>
+                                        <a href="{{route('project_task_add', $data["project"]->project_id)}}" class="btn btn-primary float-left btn-sm">Create New Task</a>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                                 <i class="fas fa-minus"></i>
@@ -53,7 +59,7 @@
                                         <div class="card-body">
                                             <div class="direct-chat-messages">
                                                 <ul class="todo-list" data-widget="todo-list">
-                                                    @foreach($data["project"]->task as $task)
+                                                    @foreach($data["project"]->task()->orderBy('task_user_id', 'asc')->get() as $task)
                                                     <li class="@if($task->task_finish == true && $task->task_user_id != Session::get('user_id') ){{'done'}}@endif">
                                                         <!-- checkbox -->
                                                         <div class="icheck-primary d-inline ml-2">
@@ -64,7 +70,7 @@
                                                         </div>
 
                                                         <!-- todo text -->
-                                                        <span class="text">{{$task->task_title}}</span>
+                                                        <span class="text">{{$task->task_title . ' (' . $task->task_deadline . ')'}}</span>
                                                         <!-- General tools such as edit or delete-->
                                                         <div class="tools">
                                                             <i class="fas fa-edit"></i>

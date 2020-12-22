@@ -5,6 +5,7 @@ return [
     'message_create_project' => 'Created a project',
     'message_add_member' => 'Added a member',
     'message_remove_member' => 'Remove a member',
+    'message_add_task' => 'Created a task',
 
     //Background
     'bg_red' => 'bg-red',

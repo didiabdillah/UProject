@@ -50,7 +50,7 @@ class ProjectMemberController extends Controller
         //Member List
         $members = DB::table("users")->select('*')->whereNotIn('user_id', function ($query) use ($project_id) {
             $query->select('member_user_id')->from('members')->where('member_project_id', $project_id);
-        })->get();
+        })->orderBy('user_name', 'asc')->get();
 
         return view('project_member.project_member_add', ['data' => $data, 'members' => $members, 'project_id' => $project_id]);
     }
@@ -69,7 +69,7 @@ class ProjectMemberController extends Controller
         foreach ($request->member as $member) {
             //Insert Data
             $data = [
-                'member_user_id' => $member,
+                'member_user_id' => htmlspecialchars($member),
                 'member_project_id' => $project_id,
                 'member_role' => 'member',
                 'member_status' => 'active'

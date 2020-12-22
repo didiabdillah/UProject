@@ -77,8 +77,10 @@ Route::group(['middleware' => ['is_Login']], function () {
 
         //Project Member Detail
         Route::get('project/member', 'ProjectMemberController@index')->name('project_member');
+        //Project Member Add
         Route::get('project/member/add', 'ProjectMemberController@add')->name('project_member_add');
         Route::post('project/member/add', 'ProjectMemberController@store')->name('project_member_add_post');
+        //Project Member Remove
         Route::delete('project/member', 'ProjectMemberController@remove')->name('project_member_remove');
 
         //Project Discussion Detail 
@@ -86,6 +88,9 @@ Route::group(['middleware' => ['is_Login']], function () {
 
         //Project Task Detail
         Route::get('project/task', 'ProjectTaskController@index')->name('project_task');
+        //Project Task Add
+        Route::get('project/task/add', 'ProjectTaskController@insert')->name('project_task_add');
+        Route::post('project/task/add', 'ProjectTaskController@store')->name('project_task_add_post');
     });
 
     //Profile Setting
