@@ -108,7 +108,7 @@
                             <!-- /.card -->
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> Minggu, 31 Desember 2020</button>
+                                <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> {{$project->project_deadline}}</button>
                             </div>
                             <!-- /.card-footer-->
                         </div>

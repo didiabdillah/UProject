@@ -42,7 +42,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="description">Task Deadline</label>
+                            <label for="date_deadline">Task Deadline</label>
                             <div class="row">
                                 <div class="col-md-6">
                                     <input type="date" min="{{date('Y-m-d')}}" class="form-control @error('date_deadline') is-invalid @enderror" id="date_deadline" name="date_deadline" placeholder="Task Deadline">

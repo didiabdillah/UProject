@@ -67,7 +67,9 @@ class ProjectController extends Controller
         $request->validate([
             'title'  => 'required|max:150',
             'description'  => 'required|max:65500',
-            'image'  => 'mimetypes:image/png,image/jpeg,image/gif'
+            'image'  => 'mimetypes:image/png,image/jpeg,image/gif',
+            'date_deadline'  => 'required',
+            'time_deadline'  => 'required'
         ]);
 
         // Retrive File Data
@@ -80,6 +82,7 @@ class ProjectController extends Controller
         $desc = htmlspecialchars($request->description);
         $status = ($request->active == 'on') ? 'active' : 'deactive';
         $image = ($file != NULL) ? $file->hashName() : NULL;
+        $deadline = htmlspecialchars($request->date_deadline . ' ' . $request->time_deadline);
 
         //Insert Data Project
         $data = [
@@ -89,7 +92,8 @@ class ProjectController extends Controller
             'project_description' => $desc,
             'project_image' => $image,
             'project_status' => $status,
-            'project_finish' => 0
+            'project_finish' => 0,
+            'project_deadline' => $deadline
         ];
         $query = Project::create($data);
 

@@ -30,7 +30,7 @@
                                 <!-- Default box -->
                                 <div class="card ">
                                     <div class="card-header">
-                                        <a href="{{route('project_task_add', $data["project"]->project_id)}}" class="btn btn-primary float-left btn-sm">Create New Task</a>
+                                        <a href="{{route('project_task_add', $data["project"]->project_id)}}" class="btn btn-primary float-left btn-sm">Create a New Task</a>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                                 <i class="fas fa-minus"></i>
@@ -90,7 +90,7 @@
                                     <!-- /.card -->
                                     <!-- /.card-body -->
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> Minggu, 31 Desember 2020</button>
+                                        <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> {{$data["project"]->project_deadline}}</button>
                                     </div>
                                     <!-- /.card-footer-->
                                 </div>

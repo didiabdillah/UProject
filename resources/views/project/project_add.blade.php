@@ -51,6 +51,27 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="date_deadline">Project Deadline</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="date" min="{{date('Y-m-d')}}" class="form-control @error('date_deadline') is-invalid @enderror" id="date_deadline" name="date_deadline" placeholder="Project Deadline">
+                                    @error('date_deadline')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" class="form-control @error('time_deadline') is-invalid @enderror" id="time_deadline" name="time_deadline" placeholder="Project Deadline">
+                                    @error('date_deadline')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image">

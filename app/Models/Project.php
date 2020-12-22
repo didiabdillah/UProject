@@ -16,7 +16,8 @@ class Project extends Model
         'project_description',
         'project_image',
         'project_status',
-        'project_finish'
+        'project_finish',
+        'project_deadline'
     ];
 
     public function task()

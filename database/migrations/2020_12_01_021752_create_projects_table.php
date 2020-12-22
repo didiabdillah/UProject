@@ -22,6 +22,7 @@ class CreateProjectsTable extends Migration
             $table->string('project_image', 255)->nullable();
             $table->enum('project_status', ['active', 'deactive']);
             $table->boolean('project_finish');
+            $table->dateTime('project_deadline');
 
             $table->timestamps();
 
