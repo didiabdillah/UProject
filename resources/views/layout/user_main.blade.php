@@ -44,11 +44,44 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                  <!-- Notifications -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge" style="margin-top: -7px;">999+</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">999+ Notifications</span>
+                    <div class="direct-chat-messages" style="height: 200px;">
+                    @for($i=0; $i<10; $i++)
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                          <div class="media-body">
+                            <p class="dropdown-item-title">
+                              Hardwired Hardwired Hardwired
+                              <p class="text-sm text-muted float-right"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </p>
+                            <p class="text-sm">Finish Your Task </p>
+                          </div>
+                        </div>
+                        <!-- Message End -->
+                      </a>
+                     @endfor
+                    </div>
+
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
+
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="user-image img-circle elevation-2" alt="User Image">

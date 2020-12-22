@@ -24,7 +24,7 @@ class AuthController extends Controller
         //Validation Form
         $request->validate(
             [
-                'login_email'  => 'required|email:rfc,dns',
+                'login_email'  => 'required|email:rfc,dns|max:255',
                 'login_password'  => 'required',
                 'g-recaptcha-response' => new Captcha(),
             ],
