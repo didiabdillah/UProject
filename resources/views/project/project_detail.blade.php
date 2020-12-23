@@ -1,6 +1,6 @@
 @extends('layout.user_main')
 
-@section('title', $data["project"]->project_title)
+@section('title', Str::words($data["project"]->project_title, 5))
 
 @section('user_page')
 

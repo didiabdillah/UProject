@@ -1,6 +1,6 @@
 @extends('layout.user_main')
 
-@section('title', $project->project_title)
+@section('title', Str::words($project->project_title, 5))
 
 @section('user_page')
 <!-- Flash Alert -->

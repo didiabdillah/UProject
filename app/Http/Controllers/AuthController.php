@@ -50,8 +50,8 @@ class AuthController extends Controller
                     //Check Remember Me
                     if ($remember != NULL) {
                         //Create Cookie
-                        Cookie::queue(Cookie::make('account', $user->user_email, 10));
-                        Cookie::queue(Cookie::make('access', $user->user_role, 10));
+                        Cookie::queue(Cookie::make('account', $user->user_email, 60 * 24));
+                        Cookie::queue(Cookie::make('access', $user->user_role, 60 * 24));
                     }
 
                     //Create Session

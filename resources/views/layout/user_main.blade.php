@@ -122,7 +122,7 @@
                         <img src="{{URL::asset('assets/img/profile/' . Session::get('user_image'))}}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{route('profile', Session::get('user_id'))}}" class="d-block">{{Str::words(Session::get('user_name'), 3)}}</a>
+                        <a href="{{route('profile', 'me')}}" class="d-block">{{Str::words(Session::get('user_name'), 3)}}</a>
                     </div>
                 </div>
 

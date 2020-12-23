@@ -1,6 +1,6 @@
 @extends('layout.user_main')
 
-@section('title', Str::words($user->user_name, 3))
+@section('title', Str::words($user->user_name, 5))
 
 @section('user_page')
 <!-- Content Wrapper. Contains page content -->
