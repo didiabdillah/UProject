@@ -25,7 +25,7 @@ class AuthController extends Controller
         $request->validate(
             [
                 'login_email'  => 'required|email:rfc,dns|max:255',
-                'login_password'  => 'required',
+                'login_password'  => 'required|max:100',
                 'g-recaptcha-response' => new Captcha(),
             ],
             [
@@ -120,8 +120,8 @@ class AuthController extends Controller
             [
                 'register_name'  => 'required|max:255',
                 'register_email'  => 'required|email:rfc,dns|max:255',
-                'register_password'  => 'required',
-                'retype_password'  => 'required|same:register_password',
+                'register_password'  => 'required|max:100',
+                'retype_password'  => 'required|max:100|same:register_password',
                 'terms'  => 'required',
                 'g-recaptcha-response' => new Captcha(),
             ],

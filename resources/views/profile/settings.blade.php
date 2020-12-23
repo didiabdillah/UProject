@@ -123,18 +123,32 @@
                                                 @method('patch')
                                                 <div class="card-body">
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Old Password</label>
-                                                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter old password">
+                                                        <label for="old_password">Old Password</label>
+                                                        <input type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" id="old_password" placeholder="Enter old password">
+                                                        @error('old_password') 
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">New Password</label>
-                                                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter new password">
+                                                        <label for="new_password">New Password</label>
+                                                        <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" id="new_password" placeholder="Enter new password">
+                                                        @error('new_password') 
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Retype New Password</label>
-                                                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Enter retype password">
+                                                        <label for="retype_password">Retype New Password</label>
+                                                        <input type="password" class="form-control @error('retype_password') is-invalid @enderror" name="retype_password" id="retype_password" placeholder="Enter retype password">
+                                                        @error('retype_password') 
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
                                                     </div>
-
                                                 </div>
                                                 <!-- /.card-body -->
 

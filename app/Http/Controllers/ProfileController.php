@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 
@@ -81,6 +82,55 @@ class ProfileController extends Controller
             'Success',
             'Account updated'
         );
+
+        return redirect()->back();
+    }
+
+    public function settings_password(Request $request, $user_id)
+    {
+        $user_id = ($user_id == 'me') ? Session::get('user_id') : $user_id;
+
+        // Input Validation
+        $request->validate([
+            'old_password'  => 'required|max:100',
+            'new_password'  => 'required|max:100',
+            'retype_password'  => 'required|max:100|same:new_password'
+        ]);
+
+        //Check Is Valid User
+        if ($request->session()->get('user_id') != $user_id) {
+            return redirect()->route('forbidden');
+        }
+
+        $old_password = htmlspecialchars($request->old_password);
+        $new_password = htmlspecialchars($request->new_password);
+
+        //Check Old Password
+        if (Hash::check($old_password, User::find($user_id)->user_password)) {
+            //Update Data
+            User::where('user_id', $user_id)
+                ->update([
+                    'user_password' => Hash::make($new_password)
+                ]);
+
+            //Flash Message
+            flash_alert(
+                __('alert.icon_success'),
+                'Success',
+                'Password updated'
+            );
+
+            return redirect()->back();
+        } else {
+            //Flash Message
+            flash_alert(
+                __('alert.icon_error'),
+                'Failed',
+                'Please check your old password'
+            );
+
+            return redirect()->back();
+        }
 
         return redirect()->back();
     }
