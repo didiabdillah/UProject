@@ -131,7 +131,8 @@ class AuthController extends Controller
                 'retype_password.same' => 'The retype password field is not same.',
                 'register_name.required' => 'The name field is required.',
                 'register_email.required' => 'The email field is required.',
-                'register_email.email' => 'The email field is wrong format.'
+                'register_email.email' => 'The email field is wrong format.',
+                'terms.required' => 'Please agree the terms.'
             ]
         );
 

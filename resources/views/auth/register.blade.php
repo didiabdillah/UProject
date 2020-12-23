@@ -88,15 +88,20 @@
                 <div class="row">
                     <div class="col-7">
                         <div class="icheck-primary">
-                            <input type="checkbox" id="agreeTerms" name="terms" value="agree" id="terms">
+                            <input type="checkbox" id="agreeTerms" name="terms" id="terms">
                             <label for="agreeTerms">
                                 I agree to the <a href="#">terms</a>
                             </label>
                         </div>
+                        @error('terms')
+                        <small class="text-danger">
+                            {{$message}}
+                        </small>
+                        @enderror
                     </div>
                     <!-- /.col -->
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block" id="register_submit">Register</button>
                     </div>
