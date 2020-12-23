@@ -118,116 +118,36 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <!-- Conversations are loaded here -->
-                                <div class="direct-chat-messages">
+                                <div class="direct-chat-messages discussion">
                                     <!-- Message. Default to the left -->
-                                    <div class="direct-chat-msg">
+                                    @foreach($discussion as $discuss)
+                                    <div class="direct-chat-msg @if($discuss->discussion_user_id == $user_id){{'right'}}@endif">
                                         <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">Alexander Pierce</span>
-                                            <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                                            <span class="direct-chat-name @if($discuss->discussion_user_id == $user_id){{'float-right'}}@else{{'float-left'}}@endif">{{$discuss->user_name}}</span>
+                                            <span class="direct-chat-timestamp @if($discuss->discussion_user_id == $user_id){{'float-left'}}@else{{'float-right'}}@endif">{{$discuss->created_at}}</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="https://randomuser.me/api/portraits/men/76.jpg" alt="message user image">
+                                        <img class="direct-chat-img" src="{{URL::asset('assets/img/profile/' . $discuss->user_image)}}" alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ratione quasi magnam repellendus sed esse, error molestias consequatur nihil? Nihil quo quis quod eum. Quae ipsam maxime ipsa cupiditate ratione?
-                                        </div>
-
-                                        <div class="direct-chat-text">
-                                            <div class="attachment">
-                                                <h4>Attachments:</h4>
-
-                                                <p class="filename">
-                                                    Theme-thumbnail-image.jpg
-                                                </p>
-
-                                                <div class="pull-right">
-                                                    <button type="button" class="btn btn-primary btn-sm btn-flat">Open</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.attachment -->
-                                        <!-- /.direct-chat-text -->
-                                    </div>
-                                    <!-- /.direct-chat-msg -->
-                                    <!-- Message. Default to the left -->
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">Alexander Pierce</span>
-                                            <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                                        </div>
-                                        <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="https://randomuser.me/api/portraits/men/76.jpg" alt="message user image">
-                                        <!-- /.direct-chat-img -->
-                                        <div class="direct-chat-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ratione quasi magnam repellendus sed esse, error molestias consequatur nihil? Nihil quo quis quod eum. Quae ipsam maxime ipsa cupiditate ratione?
+                                            {{$discuss->discussion_message}}
                                         </div>
                                         <!-- /.direct-chat-text -->
                                     </div>
+                                    @endforeach
                                     <!-- /.direct-chat-msg -->
-
-                                    <!-- Message to the right -->
-                                    <div class="direct-chat-msg right">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-right">Sarah Bullock</span>
-                                            <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
-                                        </div>
-                                        <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="https://randomuser.me/api/portraits/women/68.jpg" alt="message user image">
-                                        <!-- /.direct-chat-img -->
-                                        <div class="direct-chat-text">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus totam doloribus, dolorum nemo quae ratione explicabo eligendi et laborum tempora maxime fugiat possimus perspiciatis rem. Porro nesciunt eveniet consectetur deserunt.
-                                        </div>
-                                        <!-- /.direct-chat-text -->
-                                    </div>
-                                    <!-- /.direct-chat-msg -->
-
-                                    <!-- Message. Default to the left -->
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">Alexander Pierce</span>
-                                            <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
-                                        </div>
-                                        <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="https://randomuser.me/api/portraits/men/76.jpg" alt="message user image">
-                                        <!-- /.direct-chat-img -->
-                                        <div class="direct-chat-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam eum dolorem voluptates fugit maiores rem animi rerum mollitia odio porro velit earum nobis repellendus hic inventore, quaerat quis cum molestiae!
-                                        </div>
-                                        <!-- /.direct-chat-text -->
-                                    </div>
-                                    <!-- /.direct-chat-msg -->
-
-                                    <!-- Message to the right -->
-                                    <div class="direct-chat-msg right">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-right">Sarah Bullock</span>
-                                            <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
-                                        </div>
-                                        <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="https://randomuser.me/api/portraits/women/68.jpg" alt="message user image">
-                                        <!-- /.direct-chat-img -->
-                                        <div class="direct-chat-text text-center">
-                                            <img src="https://dummyimage.com/300x1000/000/fff.jpg" alt="" class="" style="max-width: 640px;">
-                                        </div>
-                                        <div class="direct-chat-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ad dolorum quasi voluptatum voluptatibus ratione dolores hic illo voluptates, modi reprehenderit nam delectus suscipit, obcaecati laborum et voluptatem dolor sunt?
-                                        </div>
-                                        <!-- /.direct-chat-text -->
-                                    </div>
-                                    <!-- /.direct-chat-msg -->
-
                                 </div>
                                 <!--/.direct-chat-messages-->
 
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <form action="#" method="post">
+                                <form action="{{route('project_discussion_add', $data["project"]->project_id)}}" method="POST">
+                                    @csrf
                                     <div class="input-group">
                                         <input type="text" name="message" placeholder="Type Message ..." class="form-control">
                                         <span class="input-group-append">
-                                            <button type="button" class="btn btn-secondary"><i class="fas fa-file-upload"></i></button>
-                                            <button type="button" class="btn btn-primary">Send</button>
+                                            <button type="submit" class="btn btn-primary">Send</button>
                                         </span>
                                     </div>
                                 </form>

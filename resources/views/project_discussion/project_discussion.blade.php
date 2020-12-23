@@ -37,7 +37,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <!-- Conversations are loaded here -->
-                                <div class="direct-chat-messages" style="height: 720px;">
+                                <div class="direct-chat-messages discussion" style="height: 720px;">
                                     <!-- Message. Default to the left -->
                                     <div class="direct-chat-msg">
                                         <div class="direct-chat-infos clearfix">

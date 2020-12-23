@@ -12,6 +12,7 @@ use App\Models\Project;
 use App\Models\Member;
 use App\Models\History;
 use App\Models\User;
+use App\Models\Discussion;
 
 class ProjectController extends Controller
 {
@@ -146,7 +147,16 @@ class ProjectController extends Controller
         //History List
         $data["history"] = History::where('history_project_id', $project_id)->orderBy('history_id', 'desc')->get();
 
-        return view('project.project_detail', compact('data'));
+        //Discussion
+        $discuss = Discussion::join('users', 'discussions.discussion_user_id', '=', 'users.user_id')
+            ->select('discussions.*', 'users.user_name', 'users.user_image')
+            ->where('discussion_project_id', $project_id)
+            ->orderBy('discussion_id', 'asc')
+            ->get();
+
+        $user_id = Session::get('user_id');
+
+        return view('project.project_detail', ['data' => $data, 'discussion' => $discuss, 'user_id' => $user_id]);
     }
 
     //Project History Detail

@@ -238,6 +238,12 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            // make a function to scroll down auto
+            $('.discussion').animate({
+                scrollTop: $('.discussion').get(0).scrollHeight
+            }, 1000);
+            
+
             bsCustomFileInput.init();
         });
     </script>

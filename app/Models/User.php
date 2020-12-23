@@ -17,4 +17,9 @@ class User extends Model
     {
         return $this->hasMany('App\Models\Member', 'member_user_id');
     }
+
+    public function discussion()
+    {
+        return $this->hasMany('App\Models\Discussion', 'discussion_user_id');
+    }
 }
