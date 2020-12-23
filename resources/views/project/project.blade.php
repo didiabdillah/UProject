@@ -90,11 +90,14 @@
 
                                                 <!-- todo text -->
                                                 <span class="text">{{$task->task_title}} <small>({{Carbon\Carbon::parse($task->task_deadline)->isoFormat('dddd, D MMMM Y')}})</small></span>
+                                                
+                                                @if($project->member()->where('member_user_id', Session::get('user_id'))->first()->member_role == 'owner')
                                                 <!-- General tools such as edit or delete-->
                                                 <div class="tools">
                                                     <i class="fas fa-edit"></i>
                                                     <i class="fas fa-trash"></i>
                                                 </div>
+                                                @endif
                                             </li>
                                             @endforeach
                                         </ul>
