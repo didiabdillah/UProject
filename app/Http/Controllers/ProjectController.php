@@ -94,7 +94,9 @@ class ProjectController extends Controller
 
         //Insert Data Member
         if ($request->member != NULL) {
-            foreach ($request->member as $member) {
+            foreach ($request->member as $members) {
+                $member = htmlspecialchars($members);
+
                 //Insert Data
                 $data = [
                     'member_user_id' => $member,

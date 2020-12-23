@@ -46,8 +46,8 @@ class ProfileController extends Controller
 
         // Input Validation
         $request->validate([
-            'user_name'  => 'required',
-            'user_email'  => 'required|email:rfc,dns'
+            'user_name'  => 'required|max:255',
+            'user_email'  => 'required|email:rfc,dns|max:255'
         ]);
 
         //Check Is Valid User

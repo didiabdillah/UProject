@@ -118,8 +118,8 @@ class AuthController extends Controller
         //Validation Form
         $request->validate(
             [
-                'register_name'  => 'required',
-                'register_email'  => 'required|email:rfc,dns',
+                'register_name'  => 'required|max:255',
+                'register_email'  => 'required|email:rfc,dns|max:255',
                 'register_password'  => 'required',
                 'retype_password'  => 'required|same:register_password',
                 'terms'  => 'required',
@@ -173,7 +173,7 @@ class AuthController extends Controller
 
     public function register_check_email(Request $request)
     {
-        if ($request->register_email) {
+        if (htmlspecialchars($request->register_email)) {
             $count = User::where('user_email', htmlspecialchars($request->register_email))->count();
 
             if ($count > 0) {

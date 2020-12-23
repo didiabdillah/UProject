@@ -60,9 +60,10 @@ class ProjectMemberController extends Controller
         $user_id = $request->session()->get('user_id');
 
         foreach ($request->member as $member) {
+            $members = htmlspecialchars($member);
             //Insert Data
             $data = [
-                'member_user_id' => htmlspecialchars($member),
+                'member_user_id' => $members,
                 'member_project_id' => $project_id,
                 'member_role' => 'member',
                 'member_status' => 'active'
@@ -75,7 +76,7 @@ class ProjectMemberController extends Controller
                 $project_id, //Project ID
                 User::find($user_id)->user_name, //Subject
                 __('history.message_add_member'), //Verb
-                User::find($member)->user_name, //Object
+                User::find($members)->user_name, //Object
                 __('history.icon_user_plus'), //Icon
                 __('history.bg_blue') //Background
             );
