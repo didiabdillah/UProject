@@ -89,7 +89,7 @@
                                                 </div>
 
                                                 <!-- todo text -->
-                                                <span class="text">{{$task->task_title}}</span>
+                                                <span class="text">{{$task->task_title}} <small>({{Carbon\Carbon::parse($task->task_deadline)->isoFormat('dddd, D MMMM Y')}})</small></span>
                                                 <!-- General tools such as edit or delete-->
                                                 <div class="tools">
                                                     <i class="fas fa-edit"></i>

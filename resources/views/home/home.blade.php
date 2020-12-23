@@ -118,7 +118,7 @@
                                                 </div>
 
                                                 <!-- todo text -->
-                                                <span class="text">{{$task->task_title}}</span>
+                                                <span class="text">{{$task->task_title}} <small>({{Carbon\Carbon::parse($task->task_deadline)->isoFormat('dddd, D MMMM Y')}})</small></span>
                                                 <!-- General tools such as edit or delete-->
                                                 <div class="tools">
                                                     <i class="fas fa-edit"></i>
@@ -137,7 +137,7 @@
                             <!-- /.card -->
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> Minggu, 31 Desember 2020</button>
+                                <button type="button" class="btn btn-info btn-block"><i class="fas fa-clock"></i> {{Carbon\Carbon::parse($project->project_deadline)->isoFormat('dddd, D MMMM Y')}}</button>
                             </div>
                             <!-- /.card-footer-->
                         </div>
