@@ -14,8 +14,8 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->string('project_id', 255)->primary();
-            $table->unsignedBigInteger('project_user_id');
+            $table->string('project_id', 255)->primary()->unique();
+            $table->string('project_user_id', 255);
             $table->string('project_uuid', 64)->unique()->nullable();
             $table->string('project_title', 150);
             $table->text('project_description');

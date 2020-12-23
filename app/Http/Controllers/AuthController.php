@@ -14,7 +14,7 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function login(Request $request)
     {
         return view('auth.login');
     }
@@ -150,6 +150,7 @@ class AuthController extends Controller
 
         //Insert Data 
         $data = [
+            'user_id' => hexdec(uniqid()) . strtotime(now()),
             'user_name' => htmlspecialchars($request->register_name),
             'user_email' => htmlspecialchars($request->register_email),
             'user_password' => Hash::make(htmlspecialchars($request->register_password)),

@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
+        'user_id' => hexdec(uniqid()) . strtotime(now()),
         'user_name' => $faker->name,
         'user_provider_id' => NULL,
         'user_email' => $faker->unique()->email,
