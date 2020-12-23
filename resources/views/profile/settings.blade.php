@@ -56,7 +56,7 @@
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link" href="{{route('profile', Session::get('user_id'))}}">Profile</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('profile', 'me')}}">Profile</a></li>
                                     @if($user_id == Session::get('user_id'))
                                     <li class="nav-item"><a class="nav-link active" href="#">Settings</a></li>
                                     @endif
@@ -78,7 +78,7 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <!-- form start -->
-                                            <form action="{{route('profile_settings_user', $user_id)}}" method="POST">
+                                            <form action="{{route('profile_settings_user', 'me')}}" method="POST">
                                                 @csrf
                                                 @method('put')
                                                 <div class="card-body">
@@ -118,7 +118,7 @@
                                             </div>
                                             <!-- /.card-header -->
                                             <!-- form start -->
-                                            <form action="{{route('profile_settings_password', $user_id)}}" method="POST">
+                                            <form action="{{route('profile_settings_password', 'me')}}" method="POST">
                                                 @csrf 
                                                 @method('patch')
                                                 <div class="card-body">

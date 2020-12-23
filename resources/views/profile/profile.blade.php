@@ -35,7 +35,7 @@
                                         <b>Role</b> <a class="float-right">{{$user->user_role}}</a>
                                     </li>
                                 </ul>
-                                @if(Request::segment(2) == Session::get('user_id'))
+                                @if($user_id == Session::get('user_id'))
                                 <a href="#" class="btn btn-primary btn-block"><b><i class="fas fa-camera"></i> Upload Profile Picture</b></a>
                                 @endif
                             </div>
@@ -50,8 +50,8 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#">Profile</a></li>
-                                    @if(Request::segment(2) == Session::get('user_id'))
-                                    <li class="nav-item"><a class="nav-link" href="{{route('profile_settings', Session::get('user_id'))}}">Settings</a></li>
+                                    @if($user_id == Session::get('user_id'))
+                                    <li class="nav-item"><a class="nav-link" href="{{route('profile_settings', 'me')}}">Settings</a></li>
                                     @endif
                                 </ul>
                             </div><!-- /.card-header -->

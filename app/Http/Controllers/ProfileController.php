@@ -12,6 +12,8 @@ class ProfileController extends Controller
 {
     public function index($user_id)
     {
+        $user_id = ($user_id == 'me') ? Session::get('user_id') : $user_id;
+
         //Get User Data
         $user = User::firstWhere('user_id', $user_id);
 
@@ -20,11 +22,13 @@ class ProfileController extends Controller
             return redirect()->route('not_found');
         }
 
-        return view('profile.profile', ['user' => $user]);
+        return view('profile.profile', ['user' => $user, 'user_id' => $user_id]);
     }
 
     public function settings($user_id)
     {
+        $user_id = ($user_id == 'me') ? Session::get('user_id') : $user_id;
+
         //Check Is Valid User
         if (Session::get('user_id') != $user_id) {
             return redirect()->route('forbidden');
@@ -38,6 +42,8 @@ class ProfileController extends Controller
 
     public function settings_user(Request $request, $user_id)
     {
+        $user_id = ($user_id == 'me') ? Session::get('user_id') : $user_id;
+
         // Input Validation
         $request->validate([
             'user_name'  => 'required',

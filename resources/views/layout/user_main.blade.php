@@ -98,7 +98,7 @@
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <a href="{{route('profile', Session::get('user_id'))}}" class="btn btn-default btn-flat">Profile</a>
+                            <a href="{{route('profile', 'me')}}" class="btn btn-default btn-flat">Profile</a>
                             <a href="{{route('logout')}}" class="btn btn-default btn-flat float-right">Sign out</a>
                         </li>
                     </ul>
